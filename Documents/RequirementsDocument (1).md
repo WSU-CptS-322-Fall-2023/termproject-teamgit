@@ -221,13 +221,13 @@ Our Customer is Sakire, as she have given us instructions for how she wants her 
 
 | Use case # 11      |   |
 | ------------------ |--|
-| Name              | "View research position and the status"  |
+| Name              | "View research position applied for and the status of them"  |
 | Users             | "Students"  |
-| Rationale         | "View research position applied for and the status of them"  |
-| Triggers          | ""  |
-| Preconditions     | "be logged in as a wsu student"  |
-| Actions           | "1.applications will be displayed to the user 2.applications shall display the status, either being pending, approved for interview, hired, and not hired"  |
-| Alternative paths | "main page or profile page"  |
+| Rationale         | "Students would like to see all of their research position applications and the status of them."  |
+| Triggers          | "User would initate a link to profile which would direct it to the profile page"  |
+| Preconditions     | "be logged in as a wsu student, profile page would have to render, student would also have already applied for a research position"  |
+| Actions           | "1.Profile page would have to render, then there will be a list of applied research applications where the user can view and see the status of their application. "  |
+| Alternative paths | "User can also see the more info of the research position application they sent."  |
 | Postconditions    | "render applications and there status  |
 | Acceptance tests  | "render the page"  |
 | Iteration         | "Iteration 3"  |
@@ -235,57 +235,43 @@ Our Customer is Sakire, as she have given us instructions for how she wants her 
 
 | Use case # 12     |   |
 | ------------------ |--|
-| Name              | "Withdraw pending applications"  |
+| Name              | "Withdraw pending research position applications"  |
 | Users             | "wsu Students"  |
 | Rationale         | "Student is no longer interested in a research position, so they withdraw the application"  |
-| Triggers          | "click withdraw button"  |
-| Preconditions     | "be logged in a wsu student account and already have a pending application"  |
-| Actions           | "1. Click on the withdraw button"  |
-| Alternative paths | "cancel the withdraw"  |
-| Postconditions    | "pending application will be deleted and no longer there"  |
+| Triggers          | "user initates withdraw"  |
+| Preconditions     | "be logged in a wsu student account, be in the profile page, already have a pending application"  |
+| Actions           | "User would have to render in the profile page where the list of research position will be displayed. The user then would initate the withdraw on the research position application."  |
+| Alternative paths | "User can either initate the more info tab the research position application where it will direct the user to more information about the research position application."  |
+| Postconditions    | "pending research position application will be deleted from the db, the faculty memember will no longer see the students research position application either."  |
 | Acceptance tests  | "validate on submit and check if application is deleted"  |
 | Iteration         | "Iteration 3"  |
 
-
 | Use case # 13      |   |
 | ------------------ |--|
-| Name              | "approve research position application"  |
+| Name              | "Research position application status"  |
 | Users             | "WSU faculty"  |
-| Rationale         | "The faculty approves of student trying to apple for the research position and want to interview said student."  |
-| Triggers          | "click submit button"  |
-| Preconditions     | "Be logged in a wsu faculty account, already have a research positon post, and have a pending research position application on said post. "  |
-| Actions           | "1. Faculty will have to first have to click on the select box for approved for interview on the research application of the student 2.Then click submit to update the application."  |
-| Alternative paths | "cancel/update application"  |
-| Postconditions    | "Students should have there pending application updated to Approved for Interview."  |
+| Rationale         | "The faculty will have options of updating the status of the research position application of a student with the either approved for interview, Hired, or not hired"  |
+| Triggers          | "user chooses either one of the three options to updated the status of the research position application"  |
+| Preconditions     | "Be logged in a wsu faculty account, already have a research positon post, and have a pending research position application on said post, be on my applicants page "  |
+| Actions           | "User will have displayed the list of pending research position applicants. each applications will have  more info box which will direct the user to the application descriptino of the applicant. After user gets the description applicaiton page then the user have a select box catagory which the user will initate. If user initates the Interview category then they will initate the update status which will update the application status. "  |
+| Alternative paths | "If user chooses a different category for the status update like Hired then the status of the application should then change to hired, the same would go to not hired"  |
+| Postconditions    | "Students should have there pending application status updated to either Approved for Interview, hired, or not hired. Faculty should have their applicants status updated as well."  |
 | Acceptance tests  | "Both faculty and student should see the application was approved for interview"  |
 | Iteration         | "Iteration 3"  |
 
 
-| Use case # 14      |   |
-| ------------------ |--|
-| Name              | “Hired not hired for student"  |
-| Users             | "Students "  |
-| Rationale         | "Student checking application status of research position they applied for"  |
-| Triggers          | "Student is accepted or denied for a position"  |
-| Preconditions     | "post is created and student has applied and is reviewed by faculty"  |
-| Actions           | "Tells user what their application status is via a notification. "  |
-| Alternative paths | "Main Page, apply to other posts,"  |
-| Postconditions    | "Post is removed from applied posts"  |
-| Acceptance tests  | "Was post denied or accept info correct, is post removed from current applications "  |
-| Iteration         | "3"  |
-
-| Use case # 15     |   |
+| Use case # 14     |   |
 | ------------------ |--|
 | Name              | "Faculty can delete existing post
 "  |
 | Users             | "Faculty"  |
 | Rationale         | "As a faculty member remove post either because they have fulfilled the position or position falls through"  |
 | Triggers          | "Post requirements for students meet or faculty decides to remove position"  |
-| Preconditions     | "Post is created and students have applied "  |
-| Actions           | "delete post, all unaccepted students are send denied”  |
-| Alternative paths | "view posts, homepage, edit post"  |
-| Postconditions    | "Post is removed from db, and students are sent denied"  |
-| Acceptance tests  | "check student status should be now denied ."  |
+| Preconditions     | "Faculy is logged in into an account, their should be a research post, and be in the faculty page which shows all of their research position openings"  |
+| Actions           | "User has the list of research position openings displayed. For each of the post there'll be delete option on them. The user can the choose to initate the delete option that will delete said post from the db."  |
+| Alternative paths | ""  |
+| Postconditions    | "Research application post is then deleted from the db and the students who applied for the research position application will then get a status updated that should say Position is not available"  |
+| Acceptance tests  | "check of the research position post is delete from the db and if the students status is updated to position not available."  |
 | Iteration         | "3"  |
 
 
