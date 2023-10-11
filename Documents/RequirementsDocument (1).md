@@ -94,7 +94,7 @@ Students and falucucty handling reasearch posistions. Statkeholders is WSU becua
 
 | Use case # 2    |   |
 | ------------------ |--|
-| Name              | "Main page, view all research post"  |
+| Name              | "Main page, view all research posts"  |
 | Users             | "Students & Faculty"  |
 | Rationale         | "view all open Research Posts"  |
 | Triggers          | "clicking a link to the post description"  |
@@ -305,18 +305,14 @@ You may use the following template for non-functional requirements.
 7. Sort functionaility: Users will be able to filter for different reseach positions to help find relevant postions. Ie: Major,pay,location etc
 8. Student applications: Students can apply to posts and thus can be reviewed by the Faculty advertising the position
 9. Students accounts: Students can distinguish thier profiles with resume information attched to thier profile 
-
 ----
 # 3. User Interface
 
-Here you should include the sketches or mockups for the main parts of the interface.
 
 ----
 # 4. Product Backlog
 
-https://github.com/WSU-CptS-322-Fall-2023/termproject-teamgit/issues/1
-
-----
+https://github.com/WSU-CptS-322-Fall-2023/termproject-teamgit/issues/
 # 5. References
 
 CPTS 322 Lecture, Sakire Arslan Ay
