@@ -1,7 +1,7 @@
 # Software Requirements Specification
 
-## Your Project Title
---------
+## ReasearchScout
+
 Prepared by:
 
 * `<Kyan Kotschevar-Smead>`,`<TeamGit>`
@@ -50,7 +50,7 @@ Prepared by:
 This section should provide an overview of the entire document
 
 This document lists everything you would need to know about out implementation of Reasearch Scout, which includes,
-Document PUrpose, project scope, scoucment overview, requiremwents pecifications whihc consists of customers users and stakeholders, use cases non function requirements, user interface, product backlog, and refferences.
+Document Purpose, project scope, scoucment overview, requiremwents pecifications whihc consists of customers users and stakeholders, use cases non function requirements, user interface, product backlog, and refferences.
 ## 1.1 Document Purpose
 
 This document is the preempt of our program. Every feature implentation and action can be traced back to this document. This document is an agreement for our Stakeholders for what the program should up like.
@@ -146,7 +146,7 @@ Students and falucucty handling reasearch posistions. Statkeholders is WSU becua
 | Preconditions     | "Be wsu student and render register page"  |
 | Actions           | "1.enter an account username that should be wsu email
 2.enter account password.
-3.enter contact information(first & last name, wsu ID, email, phone."  |
+3.enter contact information first & last name, wsu ID, email, phone."  |
 | Alternative paths | "Go back to Sign In"  |
 | Postconditions    | "Created a student account and sent to the db"  |
 | Acceptance tests  | "Form is validated and submitted correctly"  |
@@ -175,7 +175,7 @@ Students and falucucty handling reasearch posistions. Statkeholders is WSU becua
 | Preconditions     | "Be wsu Faculty and render register page"  |
 | Actions           | "1.enter an account username that should be wsu email
 2.enter account password.
-3.enter contact information(first & last name, wsu ID, email, phone."  |
+3.enter contact informationfirst & last name, wsu ID, email, phone."  |
 | Alternative paths | "Go back to Sign In"  |
 | Postconditions    | "Created a Faculty account and sent to the db"  |
 | Acceptance tests  | "Form is validated and submitted correctly & a Faculty member"  |
@@ -289,7 +289,7 @@ Students and falucucty handling reasearch posistions. Statkeholders is WSU becua
 | Actions           | "delete post, all unaccepted students are send denied”  |
 | Alternative paths | "view posts, homepage, edit post"  |
 | Postconditions    | "Post is removed from db, and students are sent denied"  |
-| Acceptance tests  | "check student status should be now null thus denied assuming association key."  |
+| Acceptance tests  | "check student status should be now denied ."  |
 | Iteration         | "3"  |
 
 
@@ -299,8 +299,14 @@ List the non-functional requirements in this section.
 
 You may use the following template for non-functional requirements.
 
-1. [Enter a Concise Requirement Name]:  [provide a concise description, in clear and easily understandable language to specify the requirement]
-
+1. Account Security: All accounts login information will be confidenital
+2. Web Browser Avalability: Research Scout will run on Google Chrome, Safari, and Edge
+3. Computer First Design: Research Scout will be a web app designed for computers and laptops not mobile
+4. User Accounts: Users will be able to create, add to and chnage details regarding their accounts. Ie: email username, address etc
+5. Posts CRUD: Webapp will be able to supoort the creation, retrival, updating and deletion of research position posts
+6. Search functionailty: Users will be able to search for specfic posts using keywords
+7. Sort functionaility: Users will be able to filter for different reseach positions to help find relevant postions. Ie: Major,pay,location etc
+8. Student applications: Students can apply to posts and thus can be reviewed by the Faculty advertising the position
 ----
 # 3. User Interface
 
