@@ -71,8 +71,7 @@ This section specifies the software product's requirements. Specify all of the s
 
 ## 2.1 Customer, Users, and Stakeholders
 
-Students and falucucty handling reasearch posistions. Statkeholders is WSU becuase they provided a platform to thier constituents.
-
+Our Customer is Sakire, as she have given us instructions for how she wants her Research App. The Voiland College of engineering is a stakeholder as there will be more cohesion between students and faculty. Students will benefit as users becuase they will have easy and open acsess to view and apply to reserach oppertunies. Faculty will have a platform to recurit qualfied canadites for there positions.
 ----
 ## 2.2 Use Cases
 
@@ -82,11 +81,11 @@ Students and falucucty handling reasearch posistions. Statkeholders is WSU becua
 | Name              | "Create Research Position"  |
 | Users             | "Faculty"  |
 | Rationale         | "When a research position opens within a department a faculty member needs to find students. By creating a research post on a research platform, it allows students to see the position requirements and qualifications and allows faculty to find qualified applicants"|
-| Triggers          | "Create research button is pressed"  |
-| Preconditions     | "Is faculty member, web page rendered"  |
+| Triggers          | "Create new Reseach option is selected"  |
+| Preconditions     | "Is faculty member, web page rendered, Create new Reseach option is selected"  |
 | Actions           | "Faculty inputs data into form with validator catches. Fields could be Title,Qualifications,Skills,Description,Major,ETC 2. Then the user could submit with the submit button"|
-| Alternative paths | "If information in form is left blank or major isn't found, user will be prompted to change into accurate information,2. The Faculty can also abandon creation and go back to home"  |
-| Postconditions    | "Position is created "  |
+| Alternative paths | "If information in form is left blank or major isn't found, user will be prompted to change into accurate information,2. The Faculty can also abandon creation and go back to homepage"  |
+| Postconditions    | "Position is created"  |
 | Acceptance tests  | "Form is validated and submitted correctly"  |
 | Iteration         | "1"  |
 
@@ -94,26 +93,26 @@ Students and falucucty handling reasearch posistions. Statkeholders is WSU becua
 
 | Use case # 2    |   |
 | ------------------ |--|
-| Name              | "Main page, view all research posts"  |
-| Users             | "Students & Faculty"  |
-| Rationale         | "view all open Research Posts"  |
-| Triggers          | "clicking a link to the post description"  |
-| Preconditions     | "Being a wsu student or faculty, posts are loaded in"  |
-| Actions           | "clicking on the post"  |
-| Alternative paths | "return back to main page or go back to main page"  |
+| Name              | "View all research posts"  |
+| Users             | "Students"  |
+| Rationale         | "As a Student i want to go through all research postion posts to see what is the right fit for me"  |
+| Triggers          | "Main page  is rendered with posts"  |
+| Preconditions     | "Being a wsu student, and all posts are rendered"  |
+| Actions           | "View all research posts"  |
+| Alternative paths | "View Specfic Position, Profile, Main Page"  |
 | Postconditions    | "Research Post description page"  |
-| Acceptance tests  | "url link works"  |
+| Acceptance tests  | "Are all posts rendered"  |
 | Iteration         | "Iteration 1"  |
 
 | Use case # 3     |   |
 | ------------------ |--|
-| Name              | "View Post"  |
+| Name              | "View Specfic Research Post"  |
 | Users             | "Faculty,Student"  |
-| Rationale         | "as a student look more indepth for details of post/position. as faculty see how you post looks/is doing"  |
-| Triggers          | "Click view post button on post"  |
-| Preconditions     | "webpage is rendered"  |
-| Actions           | "View details about post, and later add functionality to apply" |
-| Alternative paths | "Abort and find other posts or go back to main page "  |
+| Rationale         | "as a student look more indepth for details of post/position. as faculty see how your post looks/is doing"  |
+| Triggers          | "User selects view post option"  |
+| Preconditions     | " Posts loaded and redered with correct info, User selects view post option"  |
+| Actions           | "View details about post" |
+| Alternative paths | "Abort and find other posts, Apply"  |
 | Postconditions    | "Post details should be rendered to screen"  |
 | Acceptance tests  | "the post renders with correct information"  |
 | Iteration         | "1" |
@@ -125,10 +124,10 @@ Students and falucucty handling reasearch posistions. Statkeholders is WSU becua
 | Name              | "Apply for research position"  |
 | Users             | "Students"  |
 | Rationale         | "Student can apply for research position"  |
-| Triggers          | "Student click the submit button"  |
+| Triggers          | "Student selects apply option   |
 | Preconditions     | "Be a wsu student and have to be in the description post page."  |
-| Actions           | "1.Student will have to write a brief statement on why they want to apply  2.Student will provide both name and email of one faculty member who can provide a reference for the position."  |
-| Alternative paths | "Cancel application or go back to the main page."  |
+| Actions           | "1.Student will have to write a brief statement on why they want to apply  2.Student will provide both name and email of one faculty member who can provide a reference for the position. , 3. Student selects apply option"  |
+| Alternative paths | "Cancel application, View post"  |
 | Postconditions    | "position application sent to Faculty"  |
 | Acceptance tests  | "Form is validated and submitted correctly"  |
 | Iteration         | "Iteration 1"  |
@@ -299,12 +298,7 @@ You may use the following template for non-functional requirements.
 1. Account Security: All accounts login information will be confidenital
 2. Web Browser Avalability: Research Scout will run on Google Chrome, Safari, and Edge
 3. Computer First Design: Research Scout will be a web app designed for computers and laptops not mobile
-4. User Accounts: Users will be able to create, add to and chnage details regarding their accounts. 
-5. Posts CRUD: Webapp will be able to supoort the creation, retrival, updating and deletion of research position posts
-6. Search functionailty: Users will be able to search for specfic posts using keywords
-7. Sort functionaility: Users will be able to filter for different reseach positions to help find relevant postions. Ie: Major,pay,location etc
-8. Student applications: Students can apply to posts and thus can be reviewed by the Faculty advertising the position
-9. Students accounts: Students can distinguish thier profiles with resume information attched to thier profile 
+4. Interfacing: Interface is easy to use and can be completed with clicks
 ----
 # 3. User Interface
 
