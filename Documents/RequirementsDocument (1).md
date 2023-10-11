@@ -299,11 +299,13 @@ You may use the following template for non-functional requirements.
 1. Account Security: All accounts login information will be confidenital
 2. Web Browser Avalability: Research Scout will run on Google Chrome, Safari, and Edge
 3. Computer First Design: Research Scout will be a web app designed for computers and laptops not mobile
-4. User Accounts: Users will be able to create, add to and chnage details regarding their accounts. Ie: email username, address etc
+4. User Accounts: Users will be able to create, add to and chnage details regarding their accounts. 
 5. Posts CRUD: Webapp will be able to supoort the creation, retrival, updating and deletion of research position posts
 6. Search functionailty: Users will be able to search for specfic posts using keywords
 7. Sort functionaility: Users will be able to filter for different reseach positions to help find relevant postions. Ie: Major,pay,location etc
 8. Student applications: Students can apply to posts and thus can be reviewed by the Faculty advertising the position
+9. Students accounts: Students can distinguish thier profiles with resume information attched to thier profile 
+
 ----
 # 3. User Interface
 
