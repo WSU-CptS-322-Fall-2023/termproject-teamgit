@@ -6,7 +6,7 @@ Prepared by:
 
 * `<Kyan Kotschevar-Smead>`,`<TeamGit>`
 * `<Elliot Perez>`,`<TeamGit>`
-* `<Freddy Fernandez>`,`<TeamGit>`
+* `<Fredy Fernandez>`,`<TeamGit>`
 
 ---
 
@@ -127,8 +127,7 @@ Students and falucucty handling reasearch posistions. Statkeholders is WSU becua
 | Rationale         | "Student can apply for research position"  |
 | Triggers          | "Student click the submit button"  |
 | Preconditions     | "Be a wsu student and have to be in the description post page."  |
-| Actions           | "1.Student will have to write a brief statement on why they want to apply
-2.Student will provide both name and email of one faculty member who can provide a reference for the position."  |
+| Actions           | "1.Student will have to write a brief statement on why they want to apply  2.Student will provide both name and email of one faculty member who can provide a reference for the position."  |
 | Alternative paths | "Cancel application or go back to the main page."  |
 | Postconditions    | "position application sent to Faculty"  |
 | Acceptance tests  | "Form is validated and submitted correctly"  |
@@ -144,9 +143,7 @@ Students and falucucty handling reasearch posistions. Statkeholders is WSU becua
 | Rationale         | "create an student account to apply for research positions"  |
 | Triggers          | "Click to Register for students"  |
 | Preconditions     | "Be wsu student and render register page"  |
-| Actions           | "1.enter an account username that should be wsu email
-2.enter account password.
-3.enter contact information first & last name, wsu ID, email, phone."  |
+| Actions           | "1.enter an account username that should be wsu email 2.enter account password. 3.enter contact information first & last name, wsu ID, email, phone."  |
 | Alternative paths | "Go back to Sign In"  |
 | Postconditions    | "Created a student account and sent to the db"  |
 | Acceptance tests  | "Form is validated and submitted correctly"  |
@@ -173,9 +170,7 @@ Students and falucucty handling reasearch posistions. Statkeholders is WSU becua
 | Rationale         | "create an faculty account to post research positions"  |
 | Triggers          | "Click to Register for faculty"  |
 | Preconditions     | "Be wsu Faculty and render register page"  |
-| Actions           | "1.enter an account username that should be wsu email
-2.enter account password.
-3.enter contact informationfirst & last name, wsu ID, email, phone."  |
+| Actions           | "1.enter an account username that should be wsu email 2.enter account password. 3.enter contact informationfirst & last name, wsu ID, email, phone."  |
 | Alternative paths | "Go back to Sign In"  |
 | Postconditions    | "Created a Faculty account and sent to the db"  |
 | Acceptance tests  | "Form is validated and submitted correctly & a Faculty member"  |
@@ -232,12 +227,13 @@ Students and falucucty handling reasearch posistions. Statkeholders is WSU becua
 | Rationale         | "View research position applied for and the status of them"  |
 | Triggers          | ""  |
 | Preconditions     | "be logged in as a wsu student"  |
-| Actions           | "1.applications will be displayed to the user
-2.applications shall display the status, either being pending, approved for interview, hired, and not hired"  |
+| Actions           | "1.applications will be displayed to the user 2.applications shall display the status, either being pending, approved for interview, hired, and not hired"  |
 | Alternative paths | "main page or profile page"  |
 | Postconditions    | "render applications and there status  |
 | Acceptance tests  | "render the page"  |
 | Iteration         | "Iteration 3"  |
+
+
 | Use case # 12     |   |
 | ------------------ |--|
 | Name              | "Withdraw pending applications"  |
@@ -251,6 +247,7 @@ Students and falucucty handling reasearch posistions. Statkeholders is WSU becua
 | Acceptance tests  | "validate on submit and check if application is deleted"  |
 | Iteration         | "Iteration 3"  |
 
+
 | Use case # 13      |   |
 | ------------------ |--|
 | Name              | "approve research position application"  |
@@ -258,12 +255,12 @@ Students and falucucty handling reasearch posistions. Statkeholders is WSU becua
 | Rationale         | "The faculty approves of student trying to apple for the research position and want to interview said student."  |
 | Triggers          | "click submit button"  |
 | Preconditions     | "Be logged in a wsu faculty account, already have a research positon post, and have a pending research position application on said post. "  |
-| Actions           | "1. Faculty will have to first have to click on the select box for approved for interview on the research application of the student
-2. Then click submit to update the application."  |
+| Actions           | "1. Faculty will have to first have to click on the select box for approved for interview on the research application of the student 2.Then click submit to update the application."  |
 | Alternative paths | "cancel/update application"  |
 | Postconditions    | "Students should have there pending application updated to Approved for Interview."  |
 | Acceptance tests  | "Both faculty and student should see the application was approved for interview"  |
 | Iteration         | "Iteration 3"  |
+
 
 | Use case # 14      |   |
 | ------------------ |--|
