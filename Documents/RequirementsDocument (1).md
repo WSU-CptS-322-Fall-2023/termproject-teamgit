@@ -290,11 +290,12 @@ You may use the following template for non-functional requirements.
 ----
 # 3. User Interface
 ![Faculty Register](Images\FacReg.png)
-![Main](Images\main.png)
+![Faculty Home](Images\main.png)
 ![Sign-in](Images\Sign-in.png)
 ![Student Details #1](Images\stupro1.png)
 ![Student Details #2](Images\stupro2.png)
 ![Student Registration](Images\stuReg.png)
+![Student Home](Images\stuHome.png)
 ----
 # 4. Product Backlog
 
