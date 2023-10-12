@@ -134,90 +134,92 @@ Our Customer is Sakire, as she have given us instructions for how she wants her 
 
 
 
+| Use case # 5     |   | 
+| ------------------ |--| 
+| Name              | "Create student account"  | 
+| Users             | "student"  | 
+| Rationale         | "create a student account to apply for research positions"  | 
+| Triggers          | "Register for student"  | 
+| Preconditions     | "Be wsu student and render register page"  | 
+| Actions           | "1.enter an account username that should be wsu email 2.enter account password. 3.enter contact information first & last name, wsu ID, email, phone."  4. enter Cummulative GPA, Major, and Graduation date, 5. Enter Research Interests, Known programming languages, and previous research experience.| 
+| Alternative paths | "Go back to Sign In, Go back to previous page if you want to change something"  | 
+| Postconditions    | "Created a student account and sent to the db"  | 
+| Acceptance tests  | "Form is validated and submitted correctly"  | 
+| Iteration         | "Iteration 2"  | 
 
-| Use case # 5     |   |
-| ------------------ |--|
-| Name              | "Create student account"  |
-| Users             | "student"  |
-| Rationale         | "create an student account to apply for research positions"  |
-| Triggers          | "Click to Register for students"  |
-| Preconditions     | "Be wsu student and render register page"  |
-| Actions           | "1.enter an account username that should be wsu email 2.enter account password. 3.enter contact information first & last name, wsu ID, email, phone."  |
-| Alternative paths | "Go back to Sign In"  |
-| Postconditions    | "Created a student account and sent to the db"  |
-| Acceptance tests  | "Form is validated and submitted correctly"  |
+
+
+| Use case # 6      |   | 
+| ------------------ |--| 
+| Name              | "Student Login"  | 
+| Users             | "Student"  | 
+| Rationale         | "Login to Student account in order to apply for research positions"  | 
+| Triggers          | "login"  | 
+| Preconditions     | "Have a registered account as a wsu student member and have login page rendered"  | 
+| Actions           | "1.Fill in login and password 2.initiate login"  | 
+| Alternative paths | "Register as student"  | 
+| Postconditions    | "Logged in and render into student index page"  | 
+| Acceptance tests  | "Form is validated, submitted correctly, and student account is registered in the db"  | 
+| Iteration         | "Iteration 2"  | 
+
+
+| Use case # 7      |   | 
+| ------------------ |--| 
+| Name              | "Create faculty account"  | 
+| Users             | "Faculty"  | 
+| Rationale         | "create a faculty account to post research positions"  | 
+| Triggers          | "Register for faculty"  | 
+| Preconditions     | "Be a wsu Faculty member and be on register page"  | 
+| Actions           | "1.enter an account username that is a wsu email 2.enter account password. 3.enter contact information first & last name, wsu ID, wsu email, phone."  | 
+| Alternative paths | "Go back to Sign In, register"  | 
+| Postconditions    | "Created a Faculty account and sent to the db"  | 
+| Acceptance tests  | "Form is validated and submitted correctly as a Faculty member"  | 
+| Iteration         | "Iteration 2"  | 
+
+
+| Use case # 8      |   | 
+| ------------------ |--| 
+| Name              | "Faculty Login"  | 
+| Users             | "Faculty"  | 
+| Rationale         | "Login to Faculty account in order to access research posts and applications"  | 
+| Triggers          | "login"  | 
+| Preconditions     | "Have a registered account as a wsu faculty member and be on the login page."  | 
+| Actions           | "1.Fill in login and password 2. initiate login."  | 
+| Alternative paths | "Register as faculty"  | 
+| Postconditions    | "Logged in and render index page"  | 
+| Acceptance tests  | "Form is validated and submitted correctly and faculty account is registered in the db"  | 
+| Iteration         | "Iteration 2"  | 
+
+
+
+| Use case # 9      |   | 
+| ------------------ |--| 
+| Name              | "See list of students who applied for a research position post"  | 
+| Users             | "Faculty"  | 
+| Rationale         | "As a Faculty, I want to see a list of student for my research position posts."  | 
+| Triggers          | "Initiate view applicants navbar link"  | 
+| Preconditions     | "Is signed in as faculty and has a research position posted. Post has applicants to said post."  | 
+| Actions           | "1. Initiate view applicants navbar link"  2. render faculty applicants on view applicants page  3.Display student status on application. | 
+| Alternative paths | "Homepage, see a different applicant,and edit profile."  | 
+| Postconditions    | "List of applicants is shown with their on their application."  | 
+| Acceptance tests  | "After student applies to research position post, applicant should be shown in view applicants page for faculty."  | 
+| Iteration         | "Iteration 2"  | 
+
+
+
+| Use case # 10      |   | 
+| ------------------ |--| 
+| Name              | "View qualifications of each student"  | 
+| Users             | "Faculty"  | 
+| Rationale         | "A Faculty Needs to see student qualifications of user that applied to check if they are qualified for specific position."  | 
+| Triggers          | "Initiate show more"  | 
+| Preconditions     | "Is signed in as a faculty and be on view applicants page and have applicants."  | 
+| Actions           | "1. Initiate show more" 2. render applicant qualifications for faculty 3. Display student GPA, Technical elective courses, Research topics they are interested in, Programming Languages they have experience in, and prior research experience | | Alternative paths | "back to view applicants page, homepage"  | | Postconditions    | "N/A"  | 
+| Acceptance tests  | "After student applies to research position post, applicant should be show in view qualifications page for faculty, as well as applicant qualifications."  | 
 | Iteration         | "Iteration 2"  |
 
 
-| Use case # 6      |   |
-| ------------------ |--|
-| Name              | "Student Login"  |
-| Users             | "Student"  |
-| Rationale         | "Login to Student account in order to apply for research positions"  |
-| Triggers          | "login button"  |
-| Preconditions     | "Have a registered account as a wsu student member"  |
-| Actions           | "1.Fill in login and password"  |
-| Alternative paths | "Sign in page"  |
-| Postconditions    | "Logged in and render main page"  |
-| Acceptance tests  | "Form is validated and submitted correctly and student account is in the registered in the db"  |
-| Iteration         | "Iteration 2"  |
 
-| Use case # 7      |   |
-| ------------------ |--|
-| Name              | "Create faculty account"  |
-| Users             | "Faculty"  |
-| Rationale         | "create an faculty account to post research positions"  |
-| Triggers          | "Click to Register for faculty"  |
-| Preconditions     | "Be wsu Faculty and render register page"  |
-| Actions           | "1.enter an account username that should be wsu email 2.enter account password. 3.enter contact informationfirst & last name, wsu ID, email, phone."  |
-| Alternative paths | "Go back to Sign In"  |
-| Postconditions    | "Created a Faculty account and sent to the db"  |
-| Acceptance tests  | "Form is validated and submitted correctly & a Faculty member"  |
-| Iteration         | "Iteration 2"  |
-
-| Use case # 8      |   |
-| ------------------ |--|
-| Name              | "Faculty Login"  |
-| Users             | "Faculty"  |
-| Rationale         | "Login to Faculty account in order to access research posts and applications"  |
-| Triggers          | "login button"  |
-| Preconditions     | "Have a registered account as a wsu faculty member"  |
-| Actions           | "1.Fill in login and password"  |
-| Alternative paths | "Sign in page"  |
-| Postconditions    | "Logged in and render main page"  |
-| Acceptance tests  | "Form is validated and submitted correctly and faculty account is in the registered in the db"  |
-| Iteration         | "Iteration 2"  |
-
-
-
-| Use case # 9      |   |
-| ------------------ |--|
-| Name              | "See list of students who applied "  |
-| Users             | "Faculty"  |
-| Rationale         | "As a Faculty I want the best candidate possible for my research position. Thus i need to view all applicants thoroughly to determine the best"  |
-| Triggers          | "see students button"  |
-| Preconditions     | "Is signed in as faculty and has at least one post,post has applicants ."  |
-| Actions           | "view specific applicant"  |
-| Alternative paths | "Homepage, see a different applicant"  |
-| Postconditions    | "be able to accept or deny students immediately"  |
-| Acceptance tests  | "Is list of students accurate. "  |
-| Iteration         | "2"  |
-
-
-
-
-| Use case # 10      |   |
-| ------------------ |--|
-| Name              | "View qualifications of each student"  |
-| Users             | "Faculty"  |
-| Rationale         | "As Faculty Needs to see student profile of who applied to check if they are qualified for position via post"  |
-| Triggers          | "Student applies on post allowing faculty to look"  |
-| Preconditions     | "Post is created with student applied"  |
-| Actions           | "Be able to accept application, or deny"  |
-| Alternative paths | "back out to list of students, go to homepage"  |
-| Postconditions    | "N/A"  |
-| Acceptance tests  | "Is student info"  |
-| Iteration         | "2"  |
 
 | Use case # 11      |   |
 | ------------------ |--|
