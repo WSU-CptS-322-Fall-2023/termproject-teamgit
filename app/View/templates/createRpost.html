@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="" method="POST">
+    <div class ="formselect">
+      {{form.hidden_tag()}}
+      <p>{{form.title.label}}</p>
+      <p>{{form.title}}</p>
+
+      <p>{{form.description.label}}</p>
+      <p>{{form.description}}</p>
+    
+      <p>{{form.qualifications.label}}</p>
+      <p>{{form.qualifications}}</p>
+    
+      
+      <p>{{form.major.label}}</p>
+      <p>{{form.major}}</p>
+      
+      <p>{{form.submit}}</p>
+
+  </form>
+</div>
+
+{% endblock %}
