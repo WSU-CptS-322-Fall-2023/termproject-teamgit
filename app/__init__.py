@@ -18,8 +18,6 @@ def create_app(config_class=Config):
     # TODO: (milestone 3) Configure the app object for moment using `init_app` function. 
 
     # blueprint registration
-    from app.Controller.errors import bp_errors as errors
-    app.register_blueprint(errors)
     from app.Controller.auth_routes import bp_auth as auth
     app.register_blueprint(auth)
     from app.Controller.routes import bp_routes as routes
