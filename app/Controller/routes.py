@@ -9,6 +9,11 @@ bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 
 
 @bp_routes.route('/', methods=['GET'])
-@bp_routes.route('/index', methods=['GET'])
-def index():
-    return render_template('index.html')
+@bp_routes.route('/sindex', methods=['GET'])
+def sindex():
+    return render_template('sindex.html')
+
+
+@bp_routes.route('/findex', methods=['GET'])
+def findex():
+    return render_template('findex.html')
