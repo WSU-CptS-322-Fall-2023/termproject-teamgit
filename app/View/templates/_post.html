@@ -1,0 +1,44 @@
+<table class = "posttable" style = "width:100%" valign="top">
+    <tr> 
+        <td colspan="3"><div class="posttitle"> {{post.title}} </div>
+        </td>
+    </tr>
+    <tr>
+        <td width="10%" >
+            
+
+        </td>
+
+        <td width="80%" >
+            <div class = "postmessage">
+              <!-- (milestone1) TODO: include post body --> 
+                 {{post.Description}}
+           </div>
+           <div class="posttimestamp"> 
+              <!-- (milestone3) TODO: format the timestamp; display as local date/time-->
+              Posted at: {{ post.timestamp }}
+           </div> 
+        </td> 
+
+        <td width = "5%"> 
+            
+            <br> 
+            
+        </td>
+    </tr>
+    
+    <tr> 
+        <td colspan="3" style = "text-align:center" valign="bottom">  
+            <br>
+            <span class="tagitem">{{post.Major}}</span>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="3" style = "text-align:center" valign="bottom">  
+            <br>
+             {{post.Qualifiications}}
+          </td>
+        </tr>
+    </tr>
+</table>

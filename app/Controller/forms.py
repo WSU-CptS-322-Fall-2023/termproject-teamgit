@@ -1,6 +1,16 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import  DataRequired, Length
+from app.Model.models import ResearchPost
 
-from app.Model.models import Post
 
+
+
+class ReasearchPostForm(FlaskForm):
+   title = StringField('Title', validators=[DataRequired()])
+   description = StringField('Description', validators=[DataRequired()])
+   qualifications = StringField('Qualification', validators=[DataRequired()])
+   major = SelectField('Sort',choices = [('CS', 'Computer Science'), ('ME', 'Mechiancial Engineering'), ('BIO','Biology'),('EE','Electrical Engineering')])
+   submit =SubmitField('Submit')
+
+    

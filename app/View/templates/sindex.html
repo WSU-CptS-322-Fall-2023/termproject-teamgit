@@ -1,10 +1,16 @@
-{% extends "sbase.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 
     <h1>Welcome to Research Scout</h1>
 
-    
+    <div class="postlist">
+        {% for post in posts.all() %}
+            <div class="post-box">
+                {% include '_post.html' %}
+            </div>
+        {% endfor %}
+    </div>
 
     
 {% endblock %}
