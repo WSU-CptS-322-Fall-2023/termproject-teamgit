@@ -4,6 +4,8 @@ from flask import Blueprint
 from flask import render_template, flash, redirect, url_for, request
 from config import Config
 from app import db
+from app.Controller.forms import ReasearchPostForm
+from app.Model.models import ResearchPost
 bp_routes = Blueprint('routes', __name__)
 bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 
@@ -12,3 +14,20 @@ bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 @bp_routes.route('/index', methods=['GET'])
 def index():
     return render_template('index.html')
+
+
+
+@bp_routes.route('/addReasearch', methods=['GET','POST'])
+def AddReasearchPost():
+    cform = ReasearchPostForm()
+    if cform.validate_on_submit():
+        item = ResearchPost()
+        item.title = cform.title.data
+        item.Description = cform.description.data
+        item.Major = cform.major.data
+        item.Qualifiications = cform.qualifications.data
+        db.session.add(item)
+        db.session.commit()
+        return redirect(url_for('routes.index'))
+    
+    return render_template('createRpost.html',form = cform)
