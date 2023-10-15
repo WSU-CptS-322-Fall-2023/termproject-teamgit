@@ -14,3 +14,5 @@ class ReasearchPostForm(FlaskForm):
    submit =SubmitField('Submit')
 
     
+class ChosePageForm(FlaskForm):
+   submit =SubmitField('Submit')

@@ -1,5 +1,6 @@
 <html>
     <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     </head>
 
     <body>
@@ -9,6 +10,7 @@
                 <td><a href="{{ url_for('routes.sindex') }}" class = "button">Home</a></td>
                 <td><a href="" class = "button"> Applications </a></td>
                 <td><a href="" class = "button"> My Profile </a></td>
+                <td><a href="{{ url_for('routes.index') }}" class = "button">change page</a></td>
                 <td> Current user is: <span class="useritem">________ </span> </td>  
             </tr>
         </table>

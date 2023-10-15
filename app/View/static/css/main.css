@@ -124,7 +124,7 @@ a:hover {
 .post-box{
     display: flex;
     vertical-align: middle;
-    background-color: rgb(112, 9, 9);
+    background-color: lightgray;
     width: 32%;
     padding: 2px;
     margin: 5px;
