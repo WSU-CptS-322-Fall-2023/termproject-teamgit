@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField
+from wtforms import StringField, SubmitField, SelectField,BooleanField
 from wtforms.validators import  DataRequired, Length
 from app.Model.models import ResearchPost
 
@@ -14,5 +14,6 @@ class ReasearchPostForm(FlaskForm):
    submit =SubmitField('Submit')
 
     
-class ChosePageForm(FlaskForm):
-   submit =SubmitField('Submit')
+class SortForm(FlaskForm):
+    myposts = BooleanField('Display my posts only ')
+    submit = SubmitField('Refresh')

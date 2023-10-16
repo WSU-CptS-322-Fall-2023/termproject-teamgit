@@ -5,15 +5,19 @@
 
     <body>
         <div class ="nav-container">
-        <table>
-            <tr>
-                <td><a href="{{ url_for('routes.sindex') }}" class = "button">Home</a></td>
-                <td><a href="" class = "button"> Applications </a></td>
-                <td><a href="" class = "button"> My Profile </a></td>
-                <td><a href="{{ url_for('routes.index') }}" class = "button">change page</a></td>
-                <td> Current user is: <span class="useritem">________ </span> </td>  
-            </tr>
-        </table>
+            <nav>
+                <img src="{{url_for('static', filename = 'img//wsu.png' )}}" style="width: 100px; height: 100px;">
+                <div class="nav-links" id="navLinks">
+                    <ul>
+                        <li><a href="{{ url_for('routes.sindex') }}">Home</a></li>
+                        <li><a href="" > Applications </a></li>
+                        <li><a href=""> My profile </a></li>
+                        <li><a href="{{ url_for('routes.index') }}" >Change Page</a></li>
+                        Current user is: <span class="useritem">________ </span>
+                    </ul>
+                </div>
+            </nav>
+            
         </div>
         <div>
             {% with messages = get_flashed_messages() %}

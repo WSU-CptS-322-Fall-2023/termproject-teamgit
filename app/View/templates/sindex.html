@@ -2,7 +2,18 @@
 
 {% block content %}
 
-    <h1>Welcome to Research Scout</h1>
+    <h1 class="titleindex">Research Postings:</h1>
+    <form action="" method="post">
+            
+        {{ form.hidden_tag() }}
+            {{form.myposts}}
+            Show Recomeneded Research Positions Only
+            <!-- This will be the submit button   -->
+            <!-- {{form.submit}}  -->
+        </div>
+
+        {{ form.tag }}
+    </form>
 
     <div class="postlist">
         {% for post in posts.all() %}

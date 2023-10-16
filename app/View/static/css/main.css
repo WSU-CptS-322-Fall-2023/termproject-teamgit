@@ -6,11 +6,10 @@ body {
   
 }
 .nav-container {
-    background:white;
+    background: rgb(82, 81, 81);
     font-family: Tahoma;
     font-size: 12px;
-    height: 32px;
-    text-transform: uppercase;
+    height: 160px;
 }
 a:hover {
 	color:#2387D9;
@@ -29,6 +28,47 @@ a:hover {
     color: white;
     cursor:pointer;
 }
+nav{
+    display: flex;
+    padding:2% 6%;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.nav-links {
+    width : 65px;
+    padding : 3px;    
+    font-size: 16px;
+    margin : 5px;
+    padding : 5px;
+    color:white;
+    flex: 1;
+    text-align: right;
+}
+
+.nav-links ul li{
+    list-style:none;
+    display: inline-block;
+    padding: 8px 12px;
+    position:relative;
+}
+.nav-links ul li a{
+    color: #fff;
+    text-decoration:none;
+    font-size:13px;
+}
+.nav-links ul li::after{
+    content:'';
+    width:0%;
+    height: 2px;
+    background: rgb(190, 12, 48);
+    display:block;
+    margin:auto;
+    transition:0.5s;
+}
+.nav-links ul li:hover::after{
+    width:100%;
+}
 
 .posttable { 
     width : 100%;
@@ -39,6 +79,7 @@ a:hover {
     text-align: center;
     font-family: Tahoma;
     font-weight: bold;
+    color:white;
     padding:5px;
 }
 
@@ -79,12 +120,14 @@ a:hover {
 .postmessage{
     font-family: Tahoma;
     padding: 5px;
+    color:white;
 
 }
 
 .posttimestamp{
     font-family: Tahoma;
     padding:5px;
+    color:white;
 }
 
 .likecount{
@@ -124,10 +167,12 @@ a:hover {
 .post-box{
     display: flex;
     vertical-align: middle;
-    background-color: lightgray;
+    background-color: rgb(190, 12, 48);
     width: 32%;
     padding: 2px;
     margin: 5px;
+    border: 3px solid rgb(82, 81, 81);
+    
 }
 
 
@@ -154,7 +199,13 @@ a:hover {
 
 .tagitem{
     text-align: center;
-    padding: 3px;
-    border: 1px solid black;
-    background-color: white;
+    padding: 6px;
+    border: 1px solid rgb(82, 81, 81);
+    background-color: rgb(82, 81, 81);
+    color:white;
+}
+
+.titleindex{
+    font:tahoma;
+    color:rgb(190, 12, 48);
 }
