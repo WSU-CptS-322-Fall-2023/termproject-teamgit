@@ -1,7 +1,9 @@
-{% extends "base.html" %}
-
 {% block content %}
 
     <h1>Welcome to Research Scout</h1>
+
+    <h1><a href="{{ url_for('routes.sindex') }}" class = "button">Student Page</a></h1>
+
+    <h1><a href="{{ url_for('routes.findex') }}" class = "button">Faculty Page</a></h1>
     
 {% endblock %}

@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    </head>
+
+    <body>
+        <div class ="nav-container">
+            <nav>
+                <img src="{{url_for('static', filename = 'img//wsu.png' )}}" style="width: 100px; height: 100px;">
+                <div class="nav-links" id="navLinks">
+                    <ul>
+                        <li><a href="{{ url_for('routes.sindex') }}">Home</a></li>
+                        <li><a href="" > Applications </a></li>
+                        <li><a href=""> My profile </a></li>
+                        <li><a href="{{ url_for('routes.index') }}" >Change Page</a></li>
+                        Current user is: <span class="useritem">________ </span>
+                    </ul>
+                </div>
+            </nav>
+            
+        </div>
+        <div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <div> {{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            {% block content %} {% endblock %}
+        </div>
+
+    </body>
+</html>

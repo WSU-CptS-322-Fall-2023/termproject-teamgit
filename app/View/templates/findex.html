@@ -1,0 +1,17 @@
+{% extends "fbase.html" %}
+
+{% block content %}
+
+    <h1 class="titleindex">Welcome, Proffesor _______</h1>
+    <h1 class="titleindex">Your Current Postings:</h1>
+
+    <div class="postlist">
+        {% for post in posts.all() %}
+            <div class="post-box">
+                {% include '_post.html' %}
+            </div>
+        {% endfor %}
+    </div>
+
+    
+{% endblock %}
