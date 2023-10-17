@@ -51,3 +51,10 @@ def AddReasearchPost():
     
     return render_template('createRpost.html',form = cform)
 
+
+@bp_routes.route('/seeReasearch/<postid>', methods=['GET','POST'])
+def seeReasearch(postid):
+    print(postid)
+    thepost = ResearchPost.query.filter_by(id=postid).first()
+    print(thepost)
+    return render_template('pdetails.html',post = thepost)
