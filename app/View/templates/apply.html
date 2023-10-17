@@ -1,0 +1,16 @@
+{% extends "sbase.html" %}
+
+{% block content %}
+<h1>Apply for a Research Position</h1>
+    {% for message in get_flashed_messages() %}
+        <div>{{ message }}</div>
+    {% endfor %}
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div>{{ form.research_topic.label }} {{ form.research_topic() }}</div>
+        <div>{{ form.statement.label }} {{ form.statement() }}</div>
+        <div>{{ form.faculty_name.label }} {{ form.faculty_name() }}</div>
+        <div>{{ form.faculty_email.label }} {{ form.faculty_email() }}</div>
+        <div>{{ form.submit() }}</div>
+    </form>
+{% endblock %}

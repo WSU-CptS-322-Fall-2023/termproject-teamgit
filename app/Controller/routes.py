@@ -5,7 +5,7 @@ from flask import render_template, flash, redirect, url_for, request
 from flask_login import current_user
 from config import Config
 from app import db
-from app.Controller.forms import ReasearchPostForm, SortForm
+from app.Controller.forms import ReasearchPostForm, SortForm, ApplicationForm
 from app.Model.models import ResearchPost
 bp_routes = Blueprint('routes', __name__)
 bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
@@ -35,6 +35,19 @@ def findex():
 #   posts = current_user.get_user_posts().order_by(ResearchPost.timestamp.desc())
 
     return render_template('findex.html', posts=posts)
+
+@bp_routes.route('/apply', methods=['GET', 'POST'])
+def apply():
+    
+    form = ApplicationForm()
+    if form.validate_on_submit():
+        
+        flash('Application submitted!', 'success')
+        return redirect(url_for('apply'))  # Redirect to a success page or back to the form page
+
+    return render_template('apply.html', form=form)  # Pass the form to the template
+
+
 
 @bp_routes.route('/addReasearch', methods=['GET','POST'])
 def AddReasearchPost():

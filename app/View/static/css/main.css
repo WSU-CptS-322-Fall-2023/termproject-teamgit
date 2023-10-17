@@ -9,9 +9,12 @@ body {
 .nav-container {
     background: rgb(82, 81, 81);
     font-family: Tahoma;
-    font-size: 12px;
+    font-size: 24px;
     height: 160px;
+    color: #A60F2D;
 }
+
+
 a:hover {
 	color:#2387D9;
 }
@@ -25,7 +28,7 @@ a:hover {
     border: 1px solid lightgray;
 }
 .button:hover {
-    background-color: 157dd3;
+    background-color: #157dd3;
     color: white;
     cursor:pointer;
 }
@@ -47,17 +50,21 @@ nav{
     text-align: right;
 }
 
-.nav-links ul li{
+.nav-links ul li {
     list-style:none;
     display: inline-block;
     padding: 8px 12px;
     position:relative;
+    color: black;
 }
+
+
 .nav-links ul li a{
     color: #fff;
     text-decoration:none;
-    font-size:13px;
+    font-size:16px;
 }
+
 .nav-links ul li::after{
     content:'';
     width:0%;
