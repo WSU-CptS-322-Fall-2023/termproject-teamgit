@@ -21,6 +21,8 @@ def index():
 def sindex():
 
     posts = ResearchPost.query.order_by(ResearchPost.timestamp.desc())
+    
+    
     sform = SortForm()
 #    if sform.validate_on_submit():
 #        if sform.myposts.data is True:
