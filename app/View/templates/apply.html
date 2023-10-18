@@ -1,0 +1,62 @@
+{% extends "sbase.html" %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<div class="text-center">
+<h1 class="apply-heading">Apply for a Research Position</h1>
+    {% for message in get_flashed_messages() %}
+        <div>{{ message }}</div>
+    {% endfor %}
+
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="row justify-content-center">
+
+        <div class=" form-container col-lg-6">
+        <div class="form-group">
+            {{ form.research_topic.label(class="form-label") }}
+            {{ form.research_topic(class="form-control") }}
+            {% for error in form.research_topic.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+        </div>
+      
+      
+      
+        
+        <div class="form-group">
+            {{ form.statement.label(class="form-label") }}
+            {{ form.statement(class="form-control") }}
+            {% for error in form.statement.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+        </div>
+        
+    
+        
+        <div class="form-group">
+            {{ form.faculty_name.label(class="form-label") }}
+            {{ form.faculty_name(class="form-control") }}
+            {% for error in form.faculty_name.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+        </div>
+    
+        <div class="form-group">
+            {{ form.faculty_email.label(class="form-label") }}
+            {{ form.faculty_email(class="form-control") }}
+            {% for error in form.faculty_email.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+        </div>
+    
+        <div class="form-group">
+            {{ form.submit(class="btn btn-crimson") }}
+        </div>
+    </div>
+</div>
+    </form>
+</div>
+{% endblock %}

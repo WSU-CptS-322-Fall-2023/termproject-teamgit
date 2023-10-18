@@ -2,16 +2,25 @@
 
 {% block content %}
 
-    <h1 class="titleindex">Welcome, Proffesor _______</h1>
-    <h1 class="titleindex">Your Current Postings:</h1>
+   
 
-    <div class="postlist">
-        {% for post in posts.all() %}
-            <div class="post-box">
-                {% include '_post.html' %}
+   
+ 
+<div class="text-center">
+    <h1 class="main-title">Welcome, Professor ________</h1>
+    
+            
+      
+      
+        
+                <h4 class="recommendations">Your Current Postings:</h4>
+
             </div>
-        {% endfor %}
-    </div>
+          
+            
+         
 
+            {% include '_post.html' %}
+        
     
 {% endblock %}

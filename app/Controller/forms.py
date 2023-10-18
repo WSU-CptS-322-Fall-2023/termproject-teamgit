@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField,BooleanField
-from wtforms.validators import  DataRequired, Length
+from wtforms import StringField, SubmitField, SelectField,BooleanField, TextAreaField
+from wtforms.validators import  DataRequired, Length, Email
 from app.Model.models import ResearchPost
 
 
@@ -17,3 +17,11 @@ class ReasearchPostForm(FlaskForm):
 class SortForm(FlaskForm):
     myposts = BooleanField('Display my posts only ')
     submit = SubmitField('Refresh')
+
+
+class ApplicationForm(FlaskForm):
+   research_topic = StringField('Research Topic', validators=[DataRequired()])
+   statement = TextAreaField('Personal Statement', validators=[DataRequired()])
+   faculty_name = StringField('Faculty Name', validators=[DataRequired()])
+   faculty_email = StringField('Faculty Email', validators=[DataRequired(), Email()])
+   submit = SubmitField('Apply')
