@@ -30,6 +30,7 @@
                         </div>
                         <div class="align-self-center mt-auto">
                             <a class="btn btn-crimson" href="{{ url_for('routes.apply') }}" role="button">Apply Now</a>
+                            <a href="{{ url_for('routes.seeReasearch',postid = post.id) }}" class = "tagitem">Details</a>
 
                         </div>
                     </div>
@@ -44,9 +45,6 @@
 
     <tr> 
         <td colspan="3" style = "text-align:center" valign="bottom">  
-            
-            <span class="tagitem">Apply Now</span>
-           <a href="{{ url_for('routes.seeReasearch',postid = post.id) }}" class = "tagitem">Details</a>
         </td>
     </tr>
 
