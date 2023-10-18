@@ -19,7 +19,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ url_for('routes.sindex') }}">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ url_for('routes.findex') }}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('routes.AddReasearchPost') }}">Create Posting</a>
@@ -28,7 +28,10 @@
                         <a class="nav-link" href="#">View Applicants</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('routes.index') }}">Edit Profile</a>
+                        <a class="nav-link" href="{{ url_for('routes.index') }}">My Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('routes.index') }}">Change Page</a>
                     </li>
                     <li class="nav-item">
                         <span class="navbar-text">Current user: <span class="useritem">________</span></span>
