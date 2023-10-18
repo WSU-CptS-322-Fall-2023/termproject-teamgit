@@ -29,7 +29,7 @@
                             <p>{{ post.Qualifiications }}</p> <!-- Typo corrected from 'post.Qualifications' -->
                         </div>
                         <div class="align-self-center mt-auto">
-                            <a class="btn btn-crimson" href="{{ url_for('routes.apply') }}" role="button">Apply Now</a>
+                            <a class="btn btn-crimson" href="{{ url_for('routes.apply',researchpost_id = post.id) }}" role="button">Apply Now</a>
                             <a href="{{ url_for('routes.seeReasearch',postid = post.id) }}" class = "tagitem">Details</a>
 
                         </div>
