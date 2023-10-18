@@ -5,12 +5,12 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <div class="text-center">
-<h1 class="apply-heading">Apply for a Research Position</h1>
+<h1 class="apply-heading">Apply for {{research_post.title}}</h1>
     {% for message in get_flashed_messages() %}
         <div>{{ message }}</div>
     {% endfor %}
 
-    <form method="POST" action="">
+    <form method="POST" action="{{ url_for('routes.apply', researchpost_id=research_post.id) }}">
         {{ form.hidden_tag() }}
         <div class="row justify-content-center">
 

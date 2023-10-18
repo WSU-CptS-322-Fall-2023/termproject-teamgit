@@ -6,7 +6,7 @@ from flask_login import current_user
 from config import Config
 from app import db
 from app.Controller.forms import ReasearchPostForm, SortForm, ApplicationForm
-from app.Model.models import ResearchPost
+from app.Model.models import ResearchPost, Apply
 bp_routes = Blueprint('routes', __name__)
 bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 
@@ -38,16 +38,27 @@ def findex():
 
     return render_template('findex.html', posts=posts)
 
-@bp_routes.route('/apply', methods=['GET', 'POST'])
-def apply():
-    
+@bp_routes.route('/apply/<int:researchpost_id>', methods=['GET', 'POST'])
+def apply(researchpost_id):
+    research_post = ResearchPost.query.get_or_404(researchpost_id)  
+
     form = ApplicationForm()
     if form.validate_on_submit():
-        
-        flash('Application submitted!', 'success')
-        return redirect(url_for('apply'))  # Redirect to a success page or back to the form page
+        item = Apply()
+        item.research_topic = form.research_topic.data
+        item.statement = form.statement.data
+        item.faculty_name = form.faculty_name.data
+        item.faculty_email = form.faculty_email.data
 
-    return render_template('apply.html', form=form)  # Pass the form to the template
+        item.researchpost_id = researchpost_id  
+
+        db.session.add(item)
+        db.session.commit()
+        
+        flash('You have succesfully applied to the ' + research_post.title + " position", 'success')
+        return redirect(url_for('routes.sindex'))  
+
+    return render_template('apply.html', form=form, research_post=research_post)  
 
 
 
