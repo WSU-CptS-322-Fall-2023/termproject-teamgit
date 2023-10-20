@@ -26,10 +26,10 @@
                         </div>
                         <div class="mt-3">
                             <h5>Qualifications:</h5>
-                            <p>{{ post.Qualifiications }}</p> <!-- Typo corrected from 'post.Qualifications' -->
+                            <p>{{ post.Qualifications }}</p> <!-- Typo corrected from 'post.Qualifications' -->
                         </div>
                         <div class="align-self-center mt-auto">
-                            <a class="btn btn-crimson" href="{{ url_for('routes.apply',researchpost_id = post.id) }}" role="button">Apply Now</a>
+                            <a class="btn btn-crimson" href="{{ url_for('routes.apply', researchpost_id=post.id) }}" role="button">Apply Now</a>
                             <a href="{{ url_for('routes.seeReasearch',postid = post.id) }}" class = "tagitem">Details</a>
 
                         </div>
