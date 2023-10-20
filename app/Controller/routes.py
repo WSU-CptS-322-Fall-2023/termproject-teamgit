@@ -70,7 +70,7 @@ def AddReasearchPost():
         item.title = cform.title.data
         item.Description = cform.description.data
         item.Major = cform.major.data
-        item.Qualifiications = cform.qualifications.data
+        item.Qualifications = cform.qualifications.data
         db.session.add(item)
         db.session.commit()
         return redirect(url_for('routes.findex'))
