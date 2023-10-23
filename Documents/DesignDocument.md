@@ -58,13 +58,13 @@ At the end of the introduction, provide an overview of the document outline.
 # 2.	Architectural and Component-level Design
 ## 2.1 System Structure
 
-This section should describe the high-level architecture of your software:  i.e., the major subsystems and how they fit together. 
-If you adopted the application structure we used in the Smile App, your application would have the Model-View-Controller (MVC) pattern. If you adopted a different architectural pattern, mention the pattern you adopted in your software and briefly discuss the rationale for using the proposed architecture (i.e., why that pattern fits well for your system).
+ ![UML Compoent diagram](Images\UMLMVC.png)
+ 
+ We adopted the MVC pattern for our architecture. Our model is responsible for data retrieval, manipulation, and processing and works closly with the controller. The View is responsible for presenting the data to the user and handling the user interface elements. It is responsible for the visual and interactive parts. The controller is the middle man in between the two, where it handles user action logic and communicates with the Model to create, retrieve, update, or destroy the data accordingly.
 
-In this section:
- * Provide a UML component diagram that illustrates the architecture of your software.
- * Briefly mention the role of each subsystem in your architectural design. 
- * Discuss the rationale for the proposed decomposition in terms of  coupling and re-use.
+
+By abstracting out system in 3 compoents we designate responsibilies. This when we for say want to change a visual element in the view, it wont effect how the Model and Controller functions. Thus reducing coupling. As for reuse posts Models are used in many controllers and usecases can be reused in simalar cases
+
 
 ## 2.2 Subsystem Design 
 
