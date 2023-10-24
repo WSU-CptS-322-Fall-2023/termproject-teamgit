@@ -81,13 +81,13 @@ Briefly explain the role of the model.
 | ResearchPost                  |
 |-------------------------|
 |ResearchPost is the table for each research post position |
-| -id <br> -title <br> -description <br> -qualifications <br> -major <br> -timestamp <br> +/-applications |
+| - id: int <br> - title: string <br> - description: string <br> - qualifications: string <br> - major: string <br> - timestamp: datetime <br> +/- applications: relationship |
 ||
 
 | Apply                  |
 |-------------------------|
 |Apply is the table that holds the data of the application for the researchpost. |
-| -id <br> -research_topic <br> -statement <br> -faculty_name <br> -faculty_email <br> +/-researchpost_id  |
+| - id: int <br> - research_topic: string <br> - statement: string <br> - faculty_name: string <br> - faculty_email: string <br> +/- researchpost_id: int  |
 ||
 
 (***in iteration -2***) Revise the database model. Provide a UML diagram of your database model showing the associations and relationships among tables. Your UML diagram should also show the methods of your models.
