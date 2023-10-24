@@ -76,7 +76,17 @@ By abstracting out system in 3 compoents we designate responsibilies. This when 
 
 Briefly explain the role of the model. 
 
-(***in iteration-1***) Include a list of the tables (models) in your database and explain the role of each table. Provide the attributes of the tables (including relationships). 
+(***in iteration-1***) Include a list of the tables (models) in your database and explain the role of each table. Provide the attributes of the tables (including relationships).
+
+ResearchPost is the table for each research post position 
+| ResearchPost                  |
+|-------------------------|
+| -id <br> -title <br> -description <br> -qualifications <br> -major <br> -timestamp <br> +/-applications |
+
+Apply is the table that holds the data of the application for the researchpost.
+| Apply                  |
+|-------------------------|
+| -id <br> -research_topic <br> -statement <br> -faculty_name <br> -faculty_email <br> +/-researchpost_id  |
 
 (***in iteration -2***) Revise the database model. Provide a UML diagram of your database model showing the associations and relationships among tables. Your UML diagram should also show the methods of your models.
 
@@ -122,6 +132,8 @@ Provide a list of the page templates you plan to create (or you already created)
 
 Write a short paragraph summarizing your progress in iteration1 / iteration2.
 
+Iteration 1: Iteration 1 went smothly but there were some problems with branches and miscommunication. Even so we made sure to get everyone involved and made sure that everyone wasn't stuck with any problems. We currently have to many templates that can be shorten if we add logins/users to the application but nontheless we managed to give out a running demo.
+
 # 4. Testing Plan
 
 (***in iteration 1***)
@@ -140,6 +152,12 @@ Cite your references here.
 For the papers you cite give the authors, the title of the article, the journal name, journal volume number, date of publication and inclusive page numbers. Giving only the URL for the journal is not appropriate.
 
 For the websites, give the title, author (if applicable) and the website URL.
+
+CPTS 322 Lecture, Sakire Arslan Ay
+CPTS 322 SmileAPP
+CPTS 322 StudentAPP
+Flask Documentation
+HTML/CSS Documentation 
 
 
 ----
