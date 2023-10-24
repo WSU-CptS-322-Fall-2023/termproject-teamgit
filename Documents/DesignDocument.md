@@ -78,15 +78,17 @@ Briefly explain the role of the model.
 
 (***in iteration-1***) Include a list of the tables (models) in your database and explain the role of each table. Provide the attributes of the tables (including relationships).
 
-ResearchPost is the table for each research post position 
 | ResearchPost                  |
 |-------------------------|
+|ResearchPost is the table for each research post position |
 | -id <br> -title <br> -description <br> -qualifications <br> -major <br> -timestamp <br> +/-applications |
+||
 
-Apply is the table that holds the data of the application for the researchpost.
 | Apply                  |
 |-------------------------|
+|Apply is the table that holds the data of the application for the researchpost. |
 | -id <br> -research_topic <br> -statement <br> -faculty_name <br> -faculty_email <br> +/-researchpost_id  |
+||
 
 (***in iteration -2***) Revise the database model. Provide a UML diagram of your database model showing the associations and relationships among tables. Your UML diagram should also show the methods of your models.
 
