@@ -94,28 +94,22 @@ Briefly explain the role of the model.
 
 ### 2.2.2 Controller
 
-Briefly explain the role of the controller. If your controller is decomposed into smaller subsystems (similar to the Smile App design we discussed in class), list each of those subsystems as subsections. 
 
-For each subsystem:
- * Explain the role of the subsystem (component) and its responsibilities.
- * 	Provide a detailed description of the subsystem interface, i.e., 
-    * which other subsystems does it interact with?  
-    * what are the interdependencies between them? 
 
-**Note:** Some of your subsystems will interact with the Web clients (browsers). Make sure to include a detailed description of the routes your application will implement. For each route specify its “methods”, “URL path”, and “a description of the operation it implements”.  
-You can use the following table template to list your route specifications. 
+Your first subsystem is the "User Accounts Manager." This subsystem handles user authentication operations, allowing users to log in and register. Users can choose between student and faculty accounts during this process.
 
-(***in iteration-1***) Brainstorm with your team members and identify all routes you need to implement for the completed application and explain each route briefly. If you included most of the major routes but you missed only a few, it maybe still acceptable. 
+Additionally, there are two other subsystems: the "Faculty Manager" and the "Student Manager." The functionality available to users depends on their account type. Faculty members have access to the faculty UI, where they can create research posts. Students, on the other hand, can access the student UI and apply to research posts.
 
-(***in iteration-2***) Revise your route specifications, add the missing routes to your list, and update the routes you modified. Make sure to provide sufficient detail for each route. In iteration-2, you will be deducted points if you don’t include all major routes needed for implementing the required use-cases or if you haven’t described them in detail.
+Both student and faculty users can perform some shared research post operations.
+
 
 |   | Methods           | URL Path   | Description  |
 |:--|:------------------|:-----------|:-------------|
-|1. |                   |            |              |
-|2. |                   |            |              |
-|3. |                   |            |              |
-|4. |                   |            |              |
-|5. |                   |            |              |
+|1. |        sindex        | /sindex           |   displays student ui homepage       |
+|2. |         findex          |     findex       |        display faculty ui homepage      | 
+|3. |               apply    |    /apply/<int:researchpost_id>        |    Allows students to apply to particular research post          |
+|4. |        AddReasearchPost           |     /addReasearch       |      allows faculty to create a researchpost        |
+|5. |         seeReasearch          |    /seeReasearch/postid>        |   allows any user to view reasearch post details           |
 |6. |                   |            |              |
 
 
