@@ -1,0 +1,79 @@
+{% extends "fbase.html" %}
+
+{% block content %}
+    <h1>Register</h1>
+
+    <!-- TODO: (milestone 3) Include the template for "user registration" form here..  -->
+    {% if form %}
+
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <div>
+                
+                {{ form.username.label }}<br>
+                {{ form.username(class='textinput') }}<br>
+                
+                {% for error in form.username.errors %}
+                    <span style="color: red">[{{ error}}]</span>
+                {% endfor %}
+
+                <br>
+                {{ form.firstname.label }}<br>
+                {{ form.firstname(class='textinput') }}<br>
+                
+                {% for error in form.firstname.errors %}
+                    <span style="color: red">[{{ error}}]</span>
+                {% endfor %}
+
+                
+                <br>
+                {{ form.lastname.label }}<br>
+                {{ form.lastname(class='textinput') }}<br>
+                
+                {% for error in form.lastname.errors %}
+                    <span style="color: red">[{{ error}}]</span>
+                {% endfor %}
+                
+                
+                <br>
+                {{ form.title.label }}<br>
+                {{ form.title(class='textinput') }}<br>
+                
+                {% for error in form.title.errors %}
+                    <span style="color: red">[{{ error}}]</span>
+                {% endfor %}
+
+                <br>
+                {{ form.email.label }}<br>
+                {{ form.email(class='textinput') }}<br>
+                
+                {% for error in form.email.errors %}
+                    <span style="color: red">[{{ error}}]</span>
+                {% endfor %}
+                
+                <br>
+                {{ form.password.label }}<br>
+                {{ form.password(class='textinput')}}<br>
+                
+                {% for error in form.password.errors %}
+                    <span style="color: red">[{{ error}}]</span>
+                {% endfor %}
+
+                <br>
+                {{ form.password2.label }}<br>
+                {{ form.password2(class='textinput')}}<br>
+                
+                {% for error in form.password2.errors %}
+                    <span style="color: red">[{{ error}}]</span>
+                {% endfor %}
+
+
+            </div>
+            
+            <br>
+            {{ form.submit }}
+        </form>
+    {% endif %}
+
+
+{% endblock %}

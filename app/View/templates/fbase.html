@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 <html>
     <head>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
@@ -31,7 +30,7 @@
                         <a class="nav-link" href="{{ url_for('routes.index') }}">My Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('routes.index') }}">Change Page</a>
+                        <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
                     </li>
                     <li class="nav-item">
                         <span class="navbar-text">Current user: <span class="useritem">________</span></span>

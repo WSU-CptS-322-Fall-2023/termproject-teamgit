@@ -2,7 +2,7 @@ from __future__ import print_function
 import sys
 from flask import Blueprint
 from flask import render_template, flash, redirect, url_for, request
-from flask_login import current_user
+from flask_login import current_user, login_required
 from config import Config
 from app import db
 from app.Controller.forms import ReasearchPostForm, SortForm, ApplicationForm
@@ -13,11 +13,13 @@ bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 
 @bp_routes.route('/', methods=['GET'])
 @bp_routes.route('/index', methods=['GET'])
+@login_required
 def index():
     return render_template('index.html')
 
 
 @bp_routes.route('/sindex', methods=['GET', 'POST'])
+@login_required
 def sindex():
 
     posts = ResearchPost.query.order_by(ResearchPost.timestamp.desc())
@@ -31,6 +33,7 @@ def sindex():
     return render_template('sindex.html', posts=posts,form=sform)
 
 @bp_routes.route('/findex', methods=['GET'])
+@login_required
 def findex():
 
     posts = ResearchPost.query.order_by(ResearchPost.timestamp.desc())
@@ -39,6 +42,7 @@ def findex():
     return render_template('findex.html', posts=posts)
 
 @bp_routes.route('/apply/<int:researchpost_id>', methods=['GET', 'POST'])
+@login_required
 def apply(researchpost_id):
     research_post = ResearchPost.query.get_or_404(researchpost_id)  
 
@@ -63,6 +67,7 @@ def apply(researchpost_id):
 
 
 @bp_routes.route('/addReasearch', methods=['GET','POST'])
+@login_required
 def AddReasearchPost():
     cform = ReasearchPostForm()
     if cform.validate_on_submit():
@@ -79,6 +84,7 @@ def AddReasearchPost():
 
 
 @bp_routes.route('/seeReasearch/<postid>', methods=['GET','POST'])
+@login_required
 def seeReasearch(postid):
     print(postid)
     thepost = ResearchPost.query.filter_by(id=postid).first()
