@@ -48,15 +48,13 @@ def apply(researchpost_id):
         item.statement = form.statement.data
         item.faculty_name = form.faculty_name.data
         item.faculty_email = form.faculty_email.data
-
         item.researchpost_id = researchpost_id  
-
+        current_user.applications.append(item)
+        research_post.applications.append(item)
         db.session.add(item)
-        db.session.commit()
-        
+        db.session.commit()     
         flash('You have succesfully applied to the ' + research_post.title + " position", 'success')
         return redirect(url_for('routes.sindex'))  
-
     return render_template('apply.html', form=form, research_post=research_post)  
 
 
