@@ -10,7 +10,7 @@
 <body>
 
     <div class="container mt-5">
-
+        
         <div class="row">
             
             {% for post in posts %}
@@ -20,7 +20,7 @@
                         <div>
                             <p>{{ post.Description }}</p>
                             <p class="text-muted">Posted at: {{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</p> <!-- Format timestamp -->
-                        </div>
+                        </di>
                         <div class="text-center my-2">
                             <span class="badge badge-secondary">{{ post.Major }}</span>
                         </div>
