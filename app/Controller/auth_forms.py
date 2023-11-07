@@ -5,8 +5,8 @@ from wtforms.validators import  ValidationError, DataRequired, EqualTo, Length,E
 
 class FacultyRegForm(FlaskForm):
     username= StringField('Username', validators=[DataRequired()])
-    firstname= StringField('Firstname', validators=[DataRequired()])
-    lastname= StringField('Lastname', validators=[DataRequired()])
+    firstname= StringField('First Name', validators=[DataRequired()])
+    lastname= StringField('Last Name', validators=[DataRequired()])
     title= StringField('Title', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField("Password", validators= [DataRequired()])
@@ -25,13 +25,13 @@ class FacultyRegForm(FlaskForm):
         
 class StudentRegForm(FlaskForm):
     username= StringField('Username', validators=[DataRequired()])
-    firstname= StringField('firstname', validators=[DataRequired()])
-    lastname= StringField('lastname', validators=[DataRequired()])
+    firstname= StringField('First Name', validators=[DataRequired()])
+    lastname= StringField('Last Name', validators=[DataRequired()])
     GPA= StringField('GPA', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField("Password", validators= [DataRequired()])
     password2 = PasswordField("Repeat Password", validators= [DataRequired(), EqualTo('password')])
-    submit = SubmitField('Register ')
+    submit = SubmitField('Register')
 
     def validate_username(self,username):
         username = User.query.filter_by(username=username.data).first()
