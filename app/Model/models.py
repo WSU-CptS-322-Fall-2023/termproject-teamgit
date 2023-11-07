@@ -30,11 +30,23 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return "User %s" % self.name
 
+Studentapp = db.Table(
+    'student_apply_association',
+    db.Column('student_id', db.Integer, db.ForeignKey('student.id')),
+    db.Column('apply_id', db.Integer, db.ForeignKey('apply.id'))
+)
+
+Facultypost = db.Table(
+    'faculty_researchpost_association',
+    db.Column('faculty_id', db.Integer, db.ForeignKey('faculty.id')),
+    db.Column('researchpost_id', db.Integer, db.ForeignKey('research_post.id'))
+)
+
 class Faculty(User):
     __tablename__='faculty'
     id = db.Column(db.ForeignKey("user.id"), primary_key =True)
     title = db.Column(db.String(64))
-
+    research_posts = db.relationship('ResearchPost', secondary=Facultypost, backref='faculties')
     __mapper_args__ ={
         'polymorphic_identity': 'Faculty'
     }
@@ -43,6 +55,7 @@ class Student(User):
     __tablename__='student'
     id = db.Column(db.ForeignKey("user.id"), primary_key =True)
     GPA = db.Column(db.String(64))
+    applications = db.relationship('Apply', secondary=Studentapp, backref='students')
 
     __mapper_args__ ={
         'polymorphic_identity': 'Student'
@@ -55,7 +68,6 @@ class ResearchPost(db.Model):
     Qualifications = db.Column(db.String(30)) 
     Major = db.Column(db.String(20)) 
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-
     applications = db.relationship('Apply', backref='research_post', lazy=True)
 
 
@@ -65,5 +77,4 @@ class Apply(db.Model):
     statement =  db.Column(db.String(100))
     faculty_name = db.Column(db.String(30))
     faculty_email = db.Column(db.String(30))
-    
     researchpost_id = db.Column(db.Integer, db.ForeignKey('research_post.id'), nullable=False)
