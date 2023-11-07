@@ -1,0 +1,117 @@
+body {
+    font-family: "Monstserrat", sans-serif !important; 
+    background-color: white!important; 
+}
+
+.navbar-brand img{
+    height: 100% !important;
+    position: absolute;
+    left:0;
+    top:0;
+   
+    width: auto;
+    
+}
+
+
+
+.nav-link:hover {
+    border-bottom: 2px solid crimson;
+
+  
+}
+
+.nav-item{
+    font-size: 20px;
+    font-family: "Monstserrat", sans-serif !important; 
+
+}
+
+.nav-container{
+    height: 15%;
+    
+
+     
+}
+
+
+
+
+.post-box {
+    background-color:#f8f9fa;
+    border: 4px solid #4D4D4D; 
+    border-radius: 5px; 
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); 
+    transition: box-shadow 0.3s ease-in-out;
+    margin-bottom: 20px;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+.post-box:hover {
+    box-shadow: 0 20px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.post-box p,
+.post-box h5 {
+    margin-left: 10px; 
+    margin-right: 10px;
+    color:black;
+}
+
+.badge-secondary {
+    font-size: 100%;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+h1 {
+    color: #333; 
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1rem;
+    color: #212529; 
+}
+
+.text-muted {
+    font-size: 0.875rem; 
+    color: #6c757d !important; 
+}
+
+.btn-crimson {
+    background-color: #A60F2D !important; 
+    color: white !important; 
+    margin-top: auto;
+    align-items: center;
+}
+
+
+.main-title{
+    margin-top:5%;
+    color:#4D4D4D;
+    font-weight: bold;
+}
+
+.recommendations{
+    display: inline-block;
+    color:#A60F2D;
+    vertical-align: middle; 
+    font-weight: bold;
+    
+}
+
+
+.form-container{
+    align-items: center;
+}
+
+.apply-heading{
+    color:#4D4D4D;
+    margin-top: 5%;
+    font-weight: bold;
+}
