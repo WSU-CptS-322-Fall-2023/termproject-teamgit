@@ -1,12 +1,35 @@
 {% extends "fbase.html" %}
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<h1> Post Analytics </h1>
-<h2> Number of Applicants: (Later implemented ) </h2>
-<h2> List of Applicants: (Later implemented) </h2>
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card border-dark">
+                <div class="card-header">
+                    <h1 class="mb-0">{{ post.title }}</h1>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <strong>Qualifications:</strong> {{ post.Qualifications }}
+                    </p>
+                    <p class="card-text">
+                        <strong>Major:</strong> {{ post.Major }}
+                    </p>
+                    {% if current_user.user_type=="Faculty" %}
+                        <h1>
+                            Students:
+                        </h1>
+                    {% for Applicant in post.applications %}
+                            <p href="{}">
+                                {{Applicant.firstname}} {{Applicant.lastname}}
+                                
+                            </p>
 
-<h1> Post details </h1>
-<h2> {{post.title}}  </h2>
-<h2>  Qualifications: {{post.Qualifications}} </h2>
-<h2>  Major: {{post.Major}} </h2>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
