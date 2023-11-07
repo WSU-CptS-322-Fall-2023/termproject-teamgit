@@ -69,6 +69,7 @@ def AddReasearchPost():
         item.Description = cform.description.data
         item.Major = cform.major.data
         item.Qualifications = cform.qualifications.data
+        current_user.research_posts.append(item)
         db.session.add(item)
         db.session.commit()
         return redirect(url_for('routes.findex'))
@@ -84,5 +85,8 @@ def seeReasearch(postid):
     print(thepost)
     return render_template('pdetails.html',post = thepost)
 
-
-
+@bp_routes.route('/seeStudent/<student>', methods=['GET','POST'])
+@login_required
+def seeStudent(studentid){
+    
+}
