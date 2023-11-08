@@ -16,14 +16,21 @@
                     <p class="card-text">
                         <strong>Major:</strong> {{ post.Major }}
                     </p>
+                    <p class="card-text">
+                        <strong>Description:</strong> {{ post.Description }}
+                    </p>
+                    <p class="card-text">
+                        <strong>Time Posted:</strong> {{ post.timestamp }}
+                    </p>
+                  
                     {% if current_user.user_type=="Faculty" %}
                         <h1>
                             Students:
                         </h1>
-                    {% for Applicant in post.applications %}
-                            <p href="{}">
-                                {{Applicant.firstname}} {{Applicant.lastname}}
-                                
+                    {% for application in post.applications %}
+                            <p href="">
+                                {{application.students[0].firstname}} {{application.students[0].lastname}}
+
                             </p>
 
                         {% endfor %}
