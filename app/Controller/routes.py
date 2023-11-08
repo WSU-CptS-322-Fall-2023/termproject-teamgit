@@ -25,7 +25,7 @@ def sindex():
 #        if sform.myposts.data is True:
 #            posts = current_user.get_user_posts().order_by(ResearchPost.timestamp.desc())
 
-    return render_template('sindex.html', posts=posts,form=sform)
+    return render_template('index.html', posts=posts,form=sform)
 
 @bp_routes.route('/findex', methods=['GET'])
 @login_required
@@ -34,7 +34,7 @@ def findex():
     posts = ResearchPost.query.order_by(ResearchPost.timestamp.desc())
 #   posts = current_user.get_user_posts().order_by(ResearchPost.timestamp.desc())
 
-    return render_template('findex.html', posts=posts)
+    return render_template('index.html', posts=posts)
 
 @bp_routes.route('/apply/<int:researchpost_id>', methods=['GET', 'POST'])
 @login_required
