@@ -34,7 +34,7 @@ def student_reg():
     if rform.validate_on_submit():
         student= Student(username=rform.username.data, firstname=rform.firstname.data,
                          lastname=rform.lastname.data, GPA=rform.GPA.data,
-                         email=rform.email.data, user_type="Student")
+                         email=rform.email.data, Major = rform.Major.data, Skills = rform.Skills.data, Year = rform.Year.data,user_type="Student")
         student.set_password(rform.password.data)
         db.session.add(student)
         db.session.commit()
