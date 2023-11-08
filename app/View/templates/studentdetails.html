@@ -1,0 +1,23 @@
+{% extends "fbase.html" %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card border-dark">
+                <div class="card-header">
+                    <h1 class="mb-0"> {{ user.firstname }} {{user.lastname}}</h1>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <strong>Personal Statement:</strong>  {{app.statement}}
+                    </p>
+                    <p class="card-text">
+                        <strong>Gpa:</strong> {{ user.GPA }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

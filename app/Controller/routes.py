@@ -6,7 +6,7 @@ from flask_login import current_user, login_required
 from config import Config
 from app import db
 from app.Controller.forms import ReasearchPostForm, SortForm, ApplicationForm
-from app.Model.models import ResearchPost, Apply
+from app.Model.models import ResearchPost, Apply,Student
 bp_routes = Blueprint('routes', __name__)
 bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 
@@ -85,8 +85,11 @@ def seeReasearch(postid):
     print(thepost)
     return render_template('pdetails.html',post = thepost)
 
-@bp_routes.route('/seeStudent/<student>', methods=['GET','POST'])
+
+
+@bp_routes.route('/viewStudent/<app>/<student>', methods=['GET','POST'])
 @login_required
-def seeStudent(studentid){
-    
-}
+def viewStudent(app,student):
+    theapp = Apply.query.filter_by(id=app).first()
+    theStudent = Student.query.filter_by(id=student).first()
+    return render_template('studentdetails.html',user = theStudent,app=theapp)

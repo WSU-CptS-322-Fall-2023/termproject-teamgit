@@ -28,9 +28,11 @@
                             Students:
                         </h1>
                     {% for application in post.applications %}
-                            <p href="">
-                                {{application.students[0].firstname}} {{application.students[0].lastname}}
+                            <p>
+                                <a href="{{ url_for("routes.viewStudent", app=application.id, student=application.students[0].id) }}">
 
+                                    {{application.students[0].firstname}} {{application.students[0].lastname}} 
+                                </a>
                             </p>
 
                         {% endfor %}
