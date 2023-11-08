@@ -7,8 +7,6 @@
             <h1 class="main-title">Welcome, Professor ________</h1>
             <h4 class="recommendations">Your Current Postings:</h4>
         </div>
-                
-        {% include '_fpost.html' %}
         
     {% else %}
         <div class="text-center">
@@ -21,9 +19,10 @@
                 {{ form.tag }}
             </form>
         </div> 
-        
-        {% include '_post.html' %}
+    
                     
     {% endif %}
+
+    {% include '_post.html' %}
     
 {% endblock %}

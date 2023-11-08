@@ -10,7 +10,7 @@
 <body>
 
     <div class="container mt-5">
-        
+
         <div class="row">
             
             {% for post in posts %}
@@ -20,7 +20,7 @@
                         <div>
                             <p>{{ post.Description }}</p>
                             <p class="text-muted">Posted at: {{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</p> <!-- Format timestamp -->
-                        </di>
+                        </div>
                         <div class="text-center my-2">
                             <span class="badge badge-secondary">{{ post.Major }}</span>
                         </div>
@@ -28,11 +28,18 @@
                             <h5>Qualifications:</h5>
                             <p>{{ post.Qualifications }}</p> <!-- Typo corrected from 'post.Qualifications' -->
                         </div>
-                        <div class="align-self-center mt-auto">
-                            <a class="btn btn-crimson" href="{{ url_for('routes.apply', researchpost_id=post.id) }}" role="button">Apply Now</a>
-                            <a href="{{ url_for('routes.seeReasearch',postid = post.id) }}" class = "tagitem">Details</a>
 
-                        </div>
+                            <div class="align-self-center mt-auto">
+                                {% if current_user.user_type=="Faculty" %}
+                                <a class="btn btn-crimson" href="" role="button"></a>
+                                <a href="{{ url_for('routes.seeReasearch',postid = post.id) }}" class = "tagitem">Details</a>
+                            
+                                {% else %}
+                                <a class="btn btn-crimson" href="{{ url_for('routes.apply', researchpost_id=post.id) }}" role="button">Apply Now</a>
+                                <a href="{{ url_for('routes.seeReasearch',postid = post.id) }}" class = "tagitem">Details</a>
+                                {% endif %}
+                            </div>
+
                     </div>
                 </div>
             {% endfor %}
