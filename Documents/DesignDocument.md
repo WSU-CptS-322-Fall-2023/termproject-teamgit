@@ -105,12 +105,15 @@ Both student and faculty users can perform some shared research post operations.
 
 |   | Methods           | URL Path   | Description  |
 |:--|:------------------|:-----------|:-------------|
-|1. |        sindex        | /sindex           |   displays student ui homepage       |
-|2. |         findex          |     findex       |        display faculty ui homepage      | 
-|3. |               apply    |    /apply/<int:researchpost_id>        |    Allows students to apply to particular research post          |
-|4. |        AddReasearchPost           |     /addReasearch       |      allows faculty to create a researchpost        |
-|5. |         seeReasearch          |    /seeReasearch/postid>        |   allows any user to view reasearch post details           |
-|6. |                   |            |              |
+|1. |        index        | /index           |   displays student orfaculty ui homepage       |
+|2. |               apply    |    /apply/<int:researchpost_id>        |    Allows students to apply to particular research post          |
+|3. |        AddReasearchPost           |     /addReasearch       |      allows faculty to create a researchpost        |
+|4. |         seeReasearch          |    /seeReasearch/postid>        |   allows any user to view reasearch post details           |
+|5. |    viewStudent      |     /viewStudent/<app>/<student>       |       Allows faculty to see students information       |
+|6. |   faculty_reg      |     /faculty_reg       |       allows faculty members to sign up for an account in order to access the application       |
+|7. |   student_reg      |     /student_reg       |       allows student members to sign up for an account in order to access the application       |
+|8. |    login     |      /login      |       login for is for memebers to login to their accounts in order to access the application       |
+|9. |    logout     |      /logout      |       logout is for memebers who are already logged in and want to log out of their accounts.       |
 
 
 ### 2.2.3 View and User Interface Design 
@@ -159,8 +162,7 @@ On the profile page it shall display the users information being their first nam
 #### my applications page
 On the my applications page it will display the applications of the student the he/she applied for. It will also give the student the ability to cancel or delete the pending application as will. If the user deletes pending post then on the faculty my applicants page the applicant will no longer display there.The use case that is in this page is use case #12, #11, #9
 
-#### my applicants page
-On the my applicants page it will display a list of all the applicants tha applied to the research post positions. The faculty member will have options to update the status of the application as well.The use case that is in this page is use case #14, #13.
+
 
 
 
@@ -174,6 +176,8 @@ On the my applicants page it will display a list of all the applicants tha appli
 Write a short paragraph summarizing your progress in iteration1 / iteration2.
 
 Iteration 1: Iteration 1 went smothly but there were some problems with branches and miscommunication. Even so we made sure to get everyone involved and made sure that everyone wasn't stuck with any problems. We currently have to many templates that can be shorten if we add logins/users to the application but nontheless we managed to give out a running demo.
+
+Iteration 2: Iteration 2 was about both login and register for both Student and Faculty members. When we finished the Loging and register It was now easier for us to now narrow down our templates and routes. After the login and register we then had to asscotiate our posts to our faculty and also to allow the faculty to see the lists of student who applied for the research post and to also view their qualifications.. We now are currently looking forward to the next use cases and the testing for our application.
 
 # 4. Testing Plan
 
