@@ -4,7 +4,7 @@
 
     {% if current_user.user_type=="Faculty" %}  
         <div class="text-center">
-            <h1 class="main-title">Welcome, Professor ________</h1>
+            <h1 class="main-title">Welcome, Professor {{current_user.lastname}}</h1>
             <h4 class="recommendations">Your Current Postings:</h4>
         </div>
         
