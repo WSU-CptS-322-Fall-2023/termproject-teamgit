@@ -47,10 +47,7 @@ def student_reg():
 @bp_auth.route('/login', methods =['GET','POST'])
 def login():
     if current_user.is_authenticated:
-        if current_user.user_type=="Student":
-            return redirect(url_for('routes.index'))
-        else:
-            return redirect(url_for('routes.index'))
+        return redirect(url_for('routes.index'))
     lform= LoginForm()
     if lform.validate_on_submit():
         user = User.query.filter_by(username=lform.username.data).first()
@@ -59,9 +56,7 @@ def login():
             return redirect(url_for('auth.login'))
         login_user(user, remember=lform.remember_me.data)
 
-        if current_user.user_type=="Student":
-            return redirect(url_for('routes.index'))
-        else:
+        if current_user.is_authenticated:
             return redirect(url_for('routes.index'))
         
     return render_template('login.html',form=lform)
