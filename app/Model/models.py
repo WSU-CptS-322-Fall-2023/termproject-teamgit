@@ -55,6 +55,9 @@ class Student(User):
     __tablename__='student'
     id = db.Column(db.ForeignKey("user.id"), primary_key =True)
     GPA = db.Column(db.String(64))
+    Major = db.Column(db.String(64))
+    Year =  db.Column(db.String(64))
+    Skills =  db.Column(db.String(300))
     applications = db.relationship('Apply', secondary=Studentapp, backref='students')
 
     __mapper_args__ ={
