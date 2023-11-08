@@ -49,10 +49,36 @@
                         
                         {% for error in form.GPA.errors %}
                         <div class="invalid-feedback" style="display: block;">{{ error }}</div>
-        
+                        {% endfor %}
+                      </div>
+                      
+                      <div class="mb-3 col-md-6">
+                        {{ form.Skills.label (class="form-label")}}
+                        {{ form.Skills(class='form-control') }}
+                    
+                        {% for error in form.Skills.errors %}
+                        <div class="invalid-feedback" style="display: block;">{{ error }}</div>
                         {% endfor %}
                     </div>
-        
+                   
+                    <div class="mb-3 col-md-6">
+                        {{ form.Major.label (class="form-label")}}
+                        {{ form.Major(class='form-control') }}
+                    
+                    {% for error in form.Major.errors %}
+                    <div class="invalid-feedback" style="display: block;">{{ error }}</div>
+                    {% endfor %}
+                  </div>
+
+                  <div class="mb-3 col-md-6">
+                    {{ form.Year.label (class="form-label")}}
+                    {{ form.Year(class='form-control') }}
+                
+                {% for error in form.Year.errors %}
+                <div class="invalid-feedback" style="display: block;">{{ error }}</div>
+                {% endfor %}
+              </div>
+
                         <div class="mb-3 col-md-6">
                         {{ form.email.label (class="form-label")}}<br>
                         {{ form.email(class='form-control') }}<br>
