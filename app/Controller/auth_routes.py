@@ -13,7 +13,7 @@ bp_auth.template_folder = Config.TEMPLATE_FOLDER
 @bp_auth.route('/faculty_reg', methods=['GET','POST'])
 def faculty_reg():
     if current_user.is_authenticated:
-        return redirect(url_for('routes.findex'))
+        return redirect(url_for('routes.index'))
     rform= FacultyRegForm()
     if rform.validate_on_submit():
         faculty= Faculty(username=rform.username.data, firstname=rform.firstname.data,
@@ -23,13 +23,13 @@ def faculty_reg():
         db.session.add(faculty)
         db.session.commit()
         flash('Congrats, You are now a registered faculty member')
-        return redirect(url_for('routes.findex'))
+        return redirect(url_for('routes.index'))
     return render_template('FRegister.html',form=rform)
 
 @bp_auth.route('/student_reg', methods=['GET','POST'])
 def student_reg():
     if current_user.is_authenticated:
-        return redirect(url_for('routes.sindex'))
+        return redirect(url_for('routes.index'))
     rform= StudentRegForm()
     if rform.validate_on_submit():
         student= Student(username=rform.username.data, firstname=rform.firstname.data,
@@ -39,7 +39,7 @@ def student_reg():
         db.session.add(student)
         db.session.commit()
         flash('Congrats, You are now a registered student member')
-        return redirect(url_for('routes.sindex'))
+        return redirect(url_for('routes.index'))
     return render_template('SRegister.html',form=rform)
 
 
@@ -48,9 +48,9 @@ def student_reg():
 def login():
     if current_user.is_authenticated:
         if current_user.user_type=="Student":
-            return redirect(url_for('routes.sindex'))
+            return redirect(url_for('routes.index'))
         else:
-            return redirect(url_for('routes.findex'))
+            return redirect(url_for('routes.index'))
     lform= LoginForm()
     if lform.validate_on_submit():
         user = User.query.filter_by(username=lform.username.data).first()
@@ -60,9 +60,9 @@ def login():
         login_user(user, remember=lform.remember_me.data)
 
         if current_user.user_type=="Student":
-            return redirect(url_for('routes.sindex'))
+            return redirect(url_for('routes.index'))
         else:
-            return redirect(url_for('routes.findex'))
+            return redirect(url_for('routes.index'))
         
     return render_template('login.html',form=lform)
 

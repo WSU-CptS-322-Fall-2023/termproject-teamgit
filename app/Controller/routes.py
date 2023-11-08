@@ -13,9 +13,9 @@ bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 
 
 
-@bp_routes.route('/sindex', methods=['GET', 'POST'])
+@bp_routes.route('/index', methods=['GET', 'POST'])
 @login_required
-def sindex():
+def index():
 
     posts = ResearchPost.query.order_by(ResearchPost.timestamp.desc())
     
@@ -26,15 +26,6 @@ def sindex():
 #            posts = current_user.get_user_posts().order_by(ResearchPost.timestamp.desc())
 
     return render_template('index.html', posts=posts,form=sform)
-
-@bp_routes.route('/findex', methods=['GET'])
-@login_required
-def findex():
-
-    posts = ResearchPost.query.order_by(ResearchPost.timestamp.desc())
-#   posts = current_user.get_user_posts().order_by(ResearchPost.timestamp.desc())
-
-    return render_template('index.html', posts=posts)
 
 @bp_routes.route('/apply/<int:researchpost_id>', methods=['GET', 'POST'])
 @login_required
@@ -54,7 +45,7 @@ def apply(researchpost_id):
         db.session.add(item)
         db.session.commit()     
         flash('You have succesfully applied to the ' + research_post.title + " position", 'success')
-        return redirect(url_for('routes.sindex'))  
+        return redirect(url_for('routes.index'))  
     return render_template('apply.html', form=form, research_post=research_post)  
 
 
@@ -72,7 +63,7 @@ def AddReasearchPost():
         current_user.research_posts.append(item)
         db.session.add(item)
         db.session.commit()
-        return redirect(url_for('routes.findex'))
+        return redirect(url_for('routes.index'))
     
     return render_template('createRpost.html',form = cform)
 

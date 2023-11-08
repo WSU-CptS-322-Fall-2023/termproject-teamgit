@@ -26,7 +26,7 @@
                     </li>
                 {% elif current_user.user_type=="Faculty" %}
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ url_for('routes.findex') }}">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ url_for('routes.index') }}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('routes.AddReasearchPost') }}">Create Posting</a>
@@ -39,7 +39,7 @@
                     </li>
                 {% else %}
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ url_for('routes.sindex') }}">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ url_for('routes.index') }}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Applications</a>
