@@ -114,6 +114,8 @@ Both student and faculty users can perform some shared research post operations.
 |7. |   student_reg      |     /student_reg       |       allows student members to sign up for an account in order to access the application       |
 |8. |    login     |      /login      |       login for is for memebers to login to their accounts in order to access the application       |
 |9. |    logout     |      /logout      |       logout is for memebers who are already logged in and want to log out of their accounts.       |
+|10. |    viewapplications     |      /applications      |       viewapplications is for students to see all of the pending applications.       |
+|10. |    viewapplications     |      /applications      |       viewapplications is for students to see all of the pending applications.       |
 
 
 ### 2.2.3 View and User Interface Design 
@@ -124,37 +126,37 @@ Provide a list of the page templates you plan to create (or you already created)
 
 #### Faculty & Student Login page
 On the faculty & student Login page the user can dedcide to login with either student credentils or faculty creditentials. If the user is an excsitingh user for either fauclty or students then they will be redirected to their home page. If not then they will be denied access. If they're not a member they have the options of registering as a student or faculty. If they chose oone then they will be redirected to the registration page for student or faculty. The use case for this page is #6 and #8.
-![Faculty/StudentPage](Images\Sign-in.png)
+![Faculty/StudentPage](Images/Sign-in.png)
 
 #### Faculty Register page
 On the faculty registration page, it shall display a form that will ask the user to input their first name, last name, email, password, confirm password, and phone number. once the form is validated then the faculty shall be able to be registered in the db and be redirected to the facult home page. The use case for this page #7.
-![FacultyPage](Images\FacReg.png)
+![FacultyPage](Images/FacReg.png)
 
 #### Student Register page
 On the student registration page, it shal display a form that will ask the user to input their first name, last name, email, password, confirm password, phone number, major, com. GPA, EGD, research interests, programming L., and prior research Experience. Once the form is validated then the student shall be able to be registered in the db and be redirected to the student home page. The use case for this page #5.
-![StudentPage](Images\stuReg.png)
-![StudentPage](Images\stupro1.png)
-![StudentPage](Images\stupro2.png)
+![StudentPage](Images/stuReg.png)
+![StudentPage](Images/stupro1.png)
+![StudentPage](Images/stupro2.png)
 
 #### Faculty home page
 On the faculty home page it shall display the research posts of the faculty and have the option to delete the post as will as will the faculty member will have a tab bar where they have the options of either going create posting, View Applicaitions, or Edit Profile. Chosing either options wil redirect the Faculty member to a different page. The use case #3 and #2 are to view a research post on the main faculty home page.
-![FacultyPage](Images\main.png)
+![FacultyPage](Images/main.png)
 
 #### Student home page
 On the student home page it shall display the research post postions that are available and will have the option od only displaying the research position posts that match you intersts. There will also be a tab bar that the student cas choose of either being at the home page, My Applications, or Edit Profile and each tab will redirect the student to a different page. The use case #3 and #2 are to view a research post on the main student home page.
-![StudentPage](Images\stuHome.png)
+![StudentPage](Images/stuHome.png)
 
 #### apply page
 On the apply page shal display a form where the student can input their research topic, personal statement, faculty name, and faculty email. Once the form is validated then the application will be sent to the corresponding faculty who had the research post. The use case that is in this page is use case #4
-![StudentPage](Images\apply.png)
+![StudentPage](Images/apply.png)
 
 #### details page
 On the details page it shal display the post analytics which is the number of applicants and list of applicants. The post details shall also be shown here as will.The use case that is in this page is use case #3
-![StudentPage](Images\details.png)
+![StudentPage](Images/details.png)
 
 #### creating post page
 On the creating post page it will display a form toi create a research post that the user will input a title, description, qaulifivations, and research topic. Once the form is validated then the form will be sent to the db. It'll then be displayed on the Home page. The use case that is in this page is use case #1.
-![FacultyPage](Images\createpost.png)
+![FacultyPage](Images/createpost.png)
 
 #### My profile Page
 On the profile page it shall display the users information being their first name, last name, email, password, and phone number. You will also have the option to edit the user information.

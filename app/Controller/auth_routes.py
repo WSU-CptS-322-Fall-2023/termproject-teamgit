@@ -43,7 +43,6 @@ def student_reg():
     return render_template('SRegister.html',form=rform)
 
 
-@bp_auth.route('/', methods=['GET'])
 @bp_auth.route('/login', methods =['GET','POST'])
 def login():
     if current_user.is_authenticated:
