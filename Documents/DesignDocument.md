@@ -90,7 +90,9 @@ Briefly explain the role of the model.
 | - id: int <br> - research_topic: string <br> - statement: string <br> - faculty_name: string <br> - faculty_email: string <br> +/- researchpost_id: int  |
 ||
 
-(***in iteration -2***) Revise the database model. Provide a UML diagram of your database model showing the associations and relationships among tables. Your UML diagram should also show the methods of your models.
+
+![ModelsUML](Images/UMLModels.png)
+
 
 ### 2.2.2 Controller
 
