@@ -45,11 +45,6 @@ Prepared by:
 
 # 1. Introduction
 
-Explain the purpose for providing this design document. If this is a revision of an earlier document, please make sure to summarize what changes have been made during the revision (keep this discussion brief). 
-
-Then provide a brief description of your project and state your project goal.
-
-At the end of the introduction, provide an overview of the document outline.
 
 [Section II](#2-architectural-and-component-level-design) includes …
 
@@ -68,15 +63,10 @@ By abstracting out system in 3 compoents we designate responsibilies. This when 
 
 ## 2.2 Subsystem Design 
 
-(**Note1**: This is just a suggested template. If you adopted a pattern other than MVC, you should revise this template and the list the major subsystems in your architectural design.)
-
-(**Note2**: You should describe the design for the end product (completed application) - not only your iteration1 version. You will revise this document in iteration-2 and make changes  and/or add more details in iteration-2.)
 
 ### 2.2.1 Model
 
-Briefly explain the role of the model. 
 
-(***in iteration-1***) Include a list of the tables (models) in your database and explain the role of each table. Provide the attributes of the tables (including relationships).
 
 | ResearchPost                  |
 |-------------------------|
