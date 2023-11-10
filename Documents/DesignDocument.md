@@ -115,7 +115,7 @@ Both student and faculty users can perform some shared research post operations.
 |8. |    login     |      /login      |       login for is for memebers to login to their accounts in order to access the application       |
 |9. |    logout     |      /logout      |       logout is for memebers who are already logged in and want to log out of their accounts.       |
 |10. |    viewapplications     |      /applications      |       viewapplications is for students to see all of the pending applications.       |
-|10. |    viewapplications     |      /applications      |       viewapplications is for students to see all of the pending applications.       |
+|10. |    viewapplicants     |      /applicants     |       viewapplicants is for faculty to view all of their applicants anting to apply for the research position.       |
 
 
 ### 2.2.3 View and User Interface Design 
