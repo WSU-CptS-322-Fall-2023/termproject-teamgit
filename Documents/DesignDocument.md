@@ -68,21 +68,20 @@ By abstracting out system in 3 compoents we designate responsibilies. This when 
 
 
 
-| ResearchPost                  |
-|-------------------------|
-|ResearchPost is the table for each research post position |
-| - id: int <br> - title: string <br> - description: string <br> - qualifications: string <br> - major: string <br> - timestamp: datetime <br> +/- applications: relationship |
-||
-
-| Apply                  |
-|-------------------------|
-|Apply is the table that holds the data of the application for the researchpost. |
-| - id: int <br> - research_topic: string <br> - statement: string <br> - faculty_name: string <br> - faculty_email: string <br> +/- researchpost_id: int  |
-||
-
 
 ![ModelsUML](Images/UMLModels.png)
 
+User contains faculty and student classes that allow users to be loggin through the same security infastruture. 
+
+Student user is speciized for student resume attributes.
+
+Facutly can create posts and has an assocaited posts ids to thier creations
+
+Factulty post table and application post tables are association tables to connect students with applications and research posts with faculty
+
+Apply is the application and allows students to fill in fields required for researchposts
+
+Researchposts are for faculty to make so they have applications and see whos the best fit.
 
 ### 2.2.2 Controller
 
