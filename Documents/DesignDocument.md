@@ -183,13 +183,8 @@ Iteration 2: Iteration 2 was about both login and register for both Student and 
 
 # 4. Testing Plan
 
+We plan to test our application by doing UI Testing in the browser. We will provide different inputs for our forms and make sure that the things that we want to show up in the UI will work. For example, we want to make sure that is student can log in and be redirected to the student page and we want faculty to login and see the faculty page and what corresponds to each page. Making sure that all buttons work and that all inputs are stored correctly will also be our main focus in testing the application.
 
-
-(***in iteration 2***)
-In this section , provide a brief description of how you plan to test the system. Thought should be given to  mostly how automatic testing can be carried out, so as to maximize the limited number of human hours you will have for testing your system. Consider the following kinds of testing:
-  * *Unit Testing*: Explain for what modules you plan to write unit tests, and what framework you plan to use.  (Each team should write automated tests (at least) for testing the routes)
-  * *Functional Testing*: How will you test your system to verify that the use cases are implemented correctly? 
-  * *UI Testing*: How do you plan to test the user interface?  (Manual tests are OK)
 
 # 5. References
 
