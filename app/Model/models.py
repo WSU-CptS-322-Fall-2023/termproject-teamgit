@@ -7,6 +7,24 @@ from flask_login import UserMixin
 def load_user(id):
     return User.query.get(int(id))
 
+postTags=db.Table('postTags',
+                  db.Column('researchpost_id',db.Integer,db.ForeignKey('research_post.id')),
+                  db.Column('student_id',db.Integer,db.ForeignKey('student.id')),
+                  db.Column('tag_id',db.Integer,db.ForeignKey('tag.id')))
+
+class ResearchPost(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title =  db.Column(db.String(30))
+    Description =  db.Column(db.String(100)) 
+    Qualifications = db.Column(db.String(30)) 
+    Major = db.Column(db.String(20)) 
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    applications = db.relationship('Apply', backref='research_post', lazy=True)
+    tags = db.relationship('Tag', secondary = postTags,primaryjoin=(postTags.c.researchpost_id == id), backref=db.backref('postTags', lazy='dynamic'), lazy='dynamic')
+    def get_tags(self):
+        return self.tags
+
+
 class User(db.Model, UserMixin):
     __tablename__='user'
     id = db.Column(db.Integer, primary_key =True)
@@ -59,19 +77,13 @@ class Student(User):
     Year =  db.Column(db.String(64))
     Skills =  db.Column(db.String(300))
     applications = db.relationship('Apply', secondary=Studentapp, backref='students')
+    tags = db.relationship('Tag', secondary = postTags,primaryjoin=(postTags.c.student_id == id),backref=db.backref('postTag', lazy='dynamic'),lazy='dynamic')
 
     __mapper_args__ ={
         'polymorphic_identity': 'Student'
     }
-
-class ResearchPost(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title =  db.Column(db.String(30))
-    Description =  db.Column(db.String(100)) 
-    Qualifications = db.Column(db.String(30)) 
-    Major = db.Column(db.String(20)) 
-    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    applications = db.relationship('Apply', backref='research_post', lazy=True)
+    def get_tags(self):
+        return self.tags
 
 
 class Apply(db.Model):
@@ -81,3 +93,10 @@ class Apply(db.Model):
     faculty_name = db.Column(db.String(30))
     faculty_email = db.Column(db.String(30))
     researchpost_id = db.Column(db.Integer, db.ForeignKey('research_post.id'), nullable=False)
+
+class Tag(db.Model):
+    id= db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20))
+
+    def __repr__(self):
+        return 'Tag ID: {}, Tag Name {}'.format(self.id,self.name)

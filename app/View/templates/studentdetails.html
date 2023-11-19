@@ -31,6 +31,12 @@
                     <p class="card-text">
                         <strong>Skills:</strong>  {{user.Skills}}
                     </p>
+                    <p class="card-text">
+                        <strong>Researh Interest:</strong>
+                        {% for tag in user.get_tags().all() %}
+                          {{tag.name}}-
+                        {% endfor %}
+                    </p>
                 </div>
             </div>
         </div>

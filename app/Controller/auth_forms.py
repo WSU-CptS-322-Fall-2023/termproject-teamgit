@@ -2,6 +2,15 @@ from flask_wtf import FlaskForm
 from app.Model.models import User
 from wtforms import StringField, SubmitField,PasswordField, BooleanField
 from wtforms.validators import  ValidationError, DataRequired, EqualTo, Length,Email
+from wtforms_sqlalchemy.fields import QuerySelectMultipleField
+from wtforms.widgets import ListWidget, CheckboxInput
+from app.Model.models import Tag
+
+def get_tag():
+    return Tag.query.all()
+
+def get_taglabel(theTag):
+    return theTag.name
 
 class FacultyRegForm(FlaskForm):
     username= StringField('Username', validators=[DataRequired()])
@@ -34,6 +43,7 @@ class StudentRegForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField("Password", validators= [DataRequired()])
     password2 = PasswordField("Repeat Password", validators= [DataRequired(), EqualTo('password')])
+    tag = QuerySelectMultipleField( 'Tag', query_factory= get_tag, get_label=get_taglabel, widget=ListWidget(prefix_label=False),option_widget=CheckboxInput() )
     submit = SubmitField('Register')
 
     def validate_username(self,username):

@@ -16,7 +16,7 @@ bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 @bp_routes.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
-
+    
     posts = ResearchPost.query.order_by(ResearchPost.timestamp.desc())
     
     
@@ -69,6 +69,8 @@ def AddReasearchPost():
             item.Description = cform.description.data
             item.Major = cform.major.data
             item.Qualifications = cform.qualifications.data
+            for t in cform.tag.data:
+                item.tags.append(t)
             current_user.research_posts.append(item)
             db.session.add(item)
             db.session.commit()

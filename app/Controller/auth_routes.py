@@ -36,6 +36,8 @@ def student_reg():
                          lastname=rform.lastname.data, GPA=rform.GPA.data,
                          email=rform.email.data, Major = rform.Major.data, Skills = rform.Skills.data, Year = rform.Year.data,user_type="Student")
         student.set_password(rform.password.data)
+        for t in rform.tag.data:
+                student.tags.append(t)
         db.session.add(student)
         db.session.commit()
         flash('Congrats, You are now a registered student member')
