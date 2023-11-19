@@ -19,6 +19,7 @@ class ResearchPost(db.Model):
     Qualifications = db.Column(db.String(30)) 
     Major = db.Column(db.String(20)) 
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     applications = db.relationship('Apply', backref='research_post', lazy=True)
     tags = db.relationship('Tag', secondary = postTags,primaryjoin=(postTags.c.researchpost_id == id), backref=db.backref('postTags', lazy='dynamic'), lazy='dynamic')
     def get_tags(self):
@@ -65,6 +66,9 @@ class Faculty(User):
     id = db.Column(db.ForeignKey("user.id"), primary_key =True)
     title = db.Column(db.String(64))
     research_posts = db.relationship('ResearchPost', secondary=Facultypost, backref='faculties')
+    posts = db.relationship('ResearchPost',backref='writer',lazy='dynamic')
+    def get_user_posts(self):
+        return self.posts
     __mapper_args__ ={
         'polymorphic_identity': 'Faculty'
     }

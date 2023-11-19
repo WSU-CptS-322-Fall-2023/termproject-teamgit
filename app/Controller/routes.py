@@ -16,16 +16,14 @@ bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 @bp_routes.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
-    
     posts = ResearchPost.query.order_by(ResearchPost.timestamp.desc())
-    
-    
-    sform = SortForm()
-#    if sform.validate_on_submit():
-#        if sform.myposts.data is True: 
-#            posts = current_user.get_user_posts().order_by(ResearchPost.timestamp.desc())
+    if current_user.user_type == 'Student':
+        student = Student.query.filter_by(id=current_user.id)
+#        sform = SortForm()
+    else:
+        posts=current_user.get_user_posts().order_by(ResearchPost.timestamp.desc())   
 
-    return render_template('index.html', posts=posts,form=sform)
+    return render_template('index.html', posts=posts)
 
 @bp_routes.route('/apply/<int:researchpost_id>', methods=['GET', 'POST'])
 @login_required
@@ -69,6 +67,7 @@ def AddReasearchPost():
             item.Description = cform.description.data
             item.Major = cform.major.data
             item.Qualifications = cform.qualifications.data
+            item.user_id=current_user.id
             for t in cform.tag.data:
                 item.tags.append(t)
             current_user.research_posts.append(item)
