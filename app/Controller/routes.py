@@ -22,7 +22,7 @@ def index():
     
     sform = SortForm()
 #    if sform.validate_on_submit():
-#        if sform.myposts.data is True:
+#        if sform.myposts.data is True: 
 #            posts = current_user.get_user_posts().order_by(ResearchPost.timestamp.desc())
 
     return render_template('index.html', posts=posts,form=sform)
@@ -30,22 +30,26 @@ def index():
 @bp_routes.route('/apply/<int:researchpost_id>', methods=['GET', 'POST'])
 @login_required
 def apply(researchpost_id):
-    research_post = ResearchPost.query.get_or_404(researchpost_id)  
-
-    form = ApplicationForm()
-    if form.validate_on_submit():
-        item = Apply()
-        item.research_topic = form.research_topic.data
-        item.statement = form.statement.data
-        item.faculty_name = form.faculty_name.data
-        item.faculty_email = form.faculty_email.data
-        item.researchpost_id = researchpost_id  
-        current_user.applications.append(item)
-        research_post.applications.append(item)
-        db.session.add(item)
-        db.session.commit()     
-        flash('You have succesfully applied to the ' + research_post.title + " position", 'success')
-        return redirect(url_for('routes.index'))  
+    
+    if current_user.user_type == 'Faculty':
+        flash('Only Student members can apply!')
+        return redirect(url_for('index'))
+    else:
+        research_post = ResearchPost.query.get_or_404(researchpost_id)  
+        form = ApplicationForm()
+        if form.validate_on_submit():
+            item = Apply()
+            item.research_topic = form.research_topic.data
+            item.statement = form.statement.data
+            item.faculty_name = form.faculty_name.data
+            item.faculty_email = form.faculty_email.data
+            item.researchpost_id = researchpost_id  
+            current_user.applications.append(item)
+            research_post.applications.append(item)
+            db.session.add(item)
+            db.session.commit()     
+            flash('You have succesfully applied to the ' + research_post.title + " position", 'success')
+            return redirect(url_for('routes.index'))  
     return render_template('apply.html', form=form, research_post=research_post)  
 
 
@@ -53,17 +57,22 @@ def apply(researchpost_id):
 @bp_routes.route('/addReasearch', methods=['GET','POST'])
 @login_required
 def AddReasearchPost():
-    cform = ReasearchPostForm()
-    if cform.validate_on_submit():
-        item = ResearchPost()
-        item.title = cform.title.data
-        item.Description = cform.description.data
-        item.Major = cform.major.data
-        item.Qualifications = cform.qualifications.data
-        current_user.research_posts.append(item)
-        db.session.add(item)
-        db.session.commit()
+
+    if current_user.user_type == "Student":
+        flash('You cannot access this page!')
         return redirect(url_for('routes.index'))
+    else:
+        cform = ReasearchPostForm()
+        if cform.validate_on_submit():
+            item = ResearchPost()
+            item.title = cform.title.data
+            item.Description = cform.description.data
+            item.Major = cform.major.data
+            item.Qualifications = cform.qualifications.data
+            current_user.research_posts.append(item)
+            db.session.add(item)
+            db.session.commit()
+            return redirect(url_for('routes.index'))
     
     return render_template('createRpost.html',form = cform)
 
@@ -81,6 +90,10 @@ def seeReasearch(postid):
 @bp_routes.route('/viewStudent/<app>/<student>', methods=['GET','POST'])
 @login_required
 def viewStudent(app,student):
-    theapp = Apply.query.filter_by(id=app).first()
-    theStudent = Student.query.filter_by(id=student).first()
-    return render_template('studentdetails.html',user = theStudent,app=theapp)
+    if current_user.user_type == "Student":
+        flash('You cannot access this page!')
+        return redirect(url_for('routes.index'))
+    else:
+        theapp = Apply.query.filter_by(id=app).first()
+        theStudent = Student.query.filter_by(id=student).first()
+        return render_template('studentdetails.html',user = theStudent,app=theapp)
