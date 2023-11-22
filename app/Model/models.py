@@ -9,6 +9,9 @@ def load_user(id):
 
 postTags=db.Table('postTags',
                   db.Column('researchpost_id',db.Integer,db.ForeignKey('research_post.id')),
+                  db.Column('tag_id',db.Integer,db.ForeignKey('tag.id')))
+
+userTags=db.Table('userTags',
                   db.Column('student_id',db.Integer,db.ForeignKey('student.id')),
                   db.Column('tag_id',db.Integer,db.ForeignKey('tag.id')))
 
@@ -81,13 +84,16 @@ class Student(User):
     Year =  db.Column(db.String(64))
     Skills =  db.Column(db.String(300))
     applications = db.relationship('Apply', secondary=Studentapp, backref='students')
-    tags = db.relationship('Tag', secondary = postTags,primaryjoin=(postTags.c.student_id == id),backref=db.backref('postTag', lazy='dynamic'),lazy='dynamic')
+    tags = db.relationship('Tag', secondary = userTags,primaryjoin=(userTags.c.student_id == id), backref=db.backref('userTags', lazy='dynamic'), lazy='dynamic')
+    def get_user_posts(self):
+        return self.posts
+    
+    def get_tags(self):
+        return self.tags
 
     __mapper_args__ ={
         'polymorphic_identity': 'Student'
     }
-    def get_tags(self):
-        return self.tags
 
 
 class Apply(db.Model):

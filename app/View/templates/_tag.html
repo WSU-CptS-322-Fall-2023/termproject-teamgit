@@ -7,13 +7,11 @@
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
-
     <div class="container mt-5">
-
         <div class="row">
-            
-            {% for post in posts %}
+            {% for post in tag.postTags %}
                 <div class="col-lg-6 col-md-6 mb-4">
                     <div class="post-box d-flex flex-column h-100 p-4">
                         <h2 class="text-center">{{ post.title }}</h2>
@@ -41,30 +39,20 @@
                             <p class="text-muted">Posted at: {{ post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</p> 
                         </div>
 
-                            <div class="align-self-center mt-auto">
-                                {% if current_user.user_type=="Faculty" %}
-                                <a class="btn btn-crimson" href="" role="button">Filler</a>
-                                <a class ="btn btn-crimson" href="{{ url_for('routes.seeReasearch',postid = post.id) }}" class = "tagitem">Details</a>
+                        <div class="align-self-center mt-auto">
+                            {% if current_user.user_type=="Faculty" %}
+                            <a class="btn btn-crimson" href="" role="button">Filler</a>
+                            <a class ="btn btn-crimson" href="{{ url_for('routes.seeReasearch',postid = post.id) }}" class = "tagitem">Details</a>
                             
-                                {% else %}
-                                <a class="btn btn-crimson" href="{{ url_for('routes.apply', researchpost_id=post.id) }}" role="button">Apply Now</a>
-                                <a class="btn btn-crimson" href="{{ url_for('routes.seeReasearch',postid = post.id) }}" class = "tagitem">Details</a>
-                                {% endif %}
-                            </div>
-
+                            {% else %}
+                            <a class="btn btn-crimson" href="{{ url_for('routes.apply', researchpost_id=post.id) }}" role="button">Apply Now</a>
+                            <a class="btn btn-crimson" href="{{ url_for('routes.seeReasearch',postid = post.id) }}" class = "tagitem">Details</a>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             {% endfor %}
-        </div> 
-    </div> 
-
-          </td>
-        </tr>
-    </tr>
-
-    <tr> 
-        <td colspan="3" style = "text-align:center" valign="bottom">  
-        </td>
-    </tr>
-
+        </div>
+    </div>
 </table>
+

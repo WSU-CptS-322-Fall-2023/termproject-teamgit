@@ -21,7 +21,7 @@ class ReasearchPostForm(FlaskForm):
 
     
 class SortForm(FlaskForm):
-    myposts = BooleanField('Display my posts only ')
+    choices = SelectField('Choices', choices=['true-story','Title','# of likes', 'Happiness level'])
     submit = SubmitField('Refresh')
 
 

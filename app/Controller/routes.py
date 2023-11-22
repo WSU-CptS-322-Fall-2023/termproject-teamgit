@@ -6,7 +6,7 @@ from flask_login import current_user, login_required
 from config import Config
 from app import db
 from app.Controller.forms import ReasearchPostForm, SortForm, ApplicationForm
-from app.Model.models import ResearchPost, Apply,Student
+from app.Model.models import ResearchPost, Apply,Student,Tag
 bp_routes = Blueprint('routes', __name__)
 bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 
@@ -17,13 +17,15 @@ bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 @login_required
 def index():
     posts = ResearchPost.query.order_by(ResearchPost.timestamp.desc())
+    sform= SortForm()
     if current_user.user_type == 'Student':
-        student = Student.query.filter_by(id=current_user.id)
-#        sform = SortForm()
+        if sform.validate_on_submit():
+            tags=Tag.query.filter_by(name=sform.choices.data).first_or_404()
+            return render_template('tag.html',tag=tags)
     else:
         posts=current_user.get_user_posts().order_by(ResearchPost.timestamp.desc())   
 
-    return render_template('index.html', posts=posts)
+    return render_template('index.html', posts=posts,form=sform)
 
 @bp_routes.route('/apply/<int:researchpost_id>', methods=['GET', 'POST'])
 @login_required
