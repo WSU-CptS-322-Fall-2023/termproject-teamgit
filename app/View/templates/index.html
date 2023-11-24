@@ -27,9 +27,14 @@
                     
     {% endif %}
 
-    
+    {% if form.validate_on_submit() %}
+        {% include '_tag.html' %}
+
+    {% else %}
+        {% include '_post.html' %}
+    {% endif %}
 
 
-    {% include '_post.html' %}
+
     
 {% endblock %}

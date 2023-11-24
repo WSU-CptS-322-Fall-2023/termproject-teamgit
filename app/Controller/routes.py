@@ -6,7 +6,7 @@ from flask_login import current_user, login_required
 from config import Config
 from app import db
 from app.Controller.forms import ReasearchPostForm, SortForm, ApplicationForm
-from app.Model.models import ResearchPost, Apply,Student,Tag
+from app.Model.models import ResearchPost, Apply,Student, researchinterest
 bp_routes = Blueprint('routes', __name__)
 bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 
@@ -20,8 +20,7 @@ def index():
     sform= SortForm()
     if current_user.user_type == 'Student':
         if sform.validate_on_submit():
-            tags=Tag.query.filter_by(name=sform.choices.data).first_or_404()
-            return render_template('tag.html',tag=tags)
+            posts=researchinterest.query.filter_by(name=sform.choices.data).first_or_404()
     else:
         posts=current_user.get_user_posts().order_by(ResearchPost.timestamp.desc())   
 
@@ -70,8 +69,10 @@ def AddReasearchPost():
             item.Major = cform.major.data
             item.Qualifications = cform.qualifications.data
             item.user_id=current_user.id
-            for t in cform.tag.data:
-                item.tags.append(t)
+            for i in cform.tag.data:
+                item.interests.append(i)
+            for s in cform.tag2.data:
+                item.skills.append(s)
             current_user.research_posts.append(item)
             db.session.add(item)
             db.session.commit()

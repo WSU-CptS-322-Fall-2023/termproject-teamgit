@@ -7,13 +7,21 @@ from flask_login import UserMixin
 def load_user(id):
     return User.query.get(int(id))
 
-postTags=db.Table('postTags',
+postInterest=db.Table('postInterest',
                   db.Column('researchpost_id',db.Integer,db.ForeignKey('research_post.id')),
-                  db.Column('tag_id',db.Integer,db.ForeignKey('tag.id')))
+                  db.Column('researchinterest_id',db.Integer,db.ForeignKey('researchinterest.id')))
 
-userTags=db.Table('userTags',
+userInterest=db.Table('userInterest',
                   db.Column('student_id',db.Integer,db.ForeignKey('student.id')),
-                  db.Column('tag_id',db.Integer,db.ForeignKey('tag.id')))
+                  db.Column('researchinterest_id',db.Integer,db.ForeignKey('researchinterest.id')))
+
+postSkill=db.Table('postSkill',
+                  db.Column('researchpost_id',db.Integer,db.ForeignKey('research_post.id')),
+                  db.Column('researchskills_id',db.Integer,db.ForeignKey('researchskills.id')))
+
+userSkill=db.Table('userSkill',
+                  db.Column('student_id',db.Integer,db.ForeignKey('student.id')),
+                  db.Column('researchskills_id',db.Integer,db.ForeignKey('researchskills.id')))
 
 class ResearchPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -24,9 +32,13 @@ class ResearchPost(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     applications = db.relationship('Apply', backref='research_post', lazy=True)
-    tags = db.relationship('Tag', secondary = postTags,primaryjoin=(postTags.c.researchpost_id == id), backref=db.backref('postTags', lazy='dynamic'), lazy='dynamic')
-    def get_tags(self):
-        return self.tags
+    interests = db.relationship('researchinterest', secondary = postInterest,primaryjoin=(postInterest.c.researchpost_id == id), backref=db.backref('postInterest', lazy='dynamic'), lazy='dynamic')
+    skills = db.relationship('researchskills', secondary = postSkill,primaryjoin=(postSkill.c.researchpost_id == id), backref=db.backref('postSkill', lazy='dynamic'), lazy='dynamic')
+    def get_interests(self):
+        return self.interests
+    
+    def get_skills(self):
+        return self.skills
 
 
 class User(db.Model, UserMixin):
@@ -82,14 +94,14 @@ class Student(User):
     GPA = db.Column(db.String(64))
     Major = db.Column(db.String(64))
     Year =  db.Column(db.String(64))
-    Skills =  db.Column(db.String(300))
     applications = db.relationship('Apply', secondary=Studentapp, backref='students')
-    tags = db.relationship('Tag', secondary = userTags,primaryjoin=(userTags.c.student_id == id), backref=db.backref('userTags', lazy='dynamic'), lazy='dynamic')
+    interests = db.relationship('researchinterest', secondary = userInterest,primaryjoin=(userInterest.c.student_id == id), backref=db.backref('userInterest', lazy='dynamic'), lazy='dynamic')
+    skills = db.relationship('researchskills', secondary = userSkill,primaryjoin=(userSkill.c.student_id == id), backref=db.backref('userSkill', lazy='dynamic'), lazy='dynamic')
     def get_user_posts(self):
         return self.posts
     
-    def get_tags(self):
-        return self.tags
+    def get_interests(self):
+        return self.interests
 
     __mapper_args__ ={
         'polymorphic_identity': 'Student'
@@ -104,9 +116,15 @@ class Apply(db.Model):
     faculty_email = db.Column(db.String(30))
     researchpost_id = db.Column(db.Integer, db.ForeignKey('research_post.id'), nullable=False)
 
-class Tag(db.Model):
+    
+class researchinterest(db.Model):
     id= db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20))
-
     def __repr__(self):
-        return 'Tag ID: {}, Tag Name {}'.format(self.id,self.name)
+        return 'RI ID: {}, RI Name {}'.format(self.id,self.name)
+    
+class researchskills(db.Model):
+    id= db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20))
+    def __repr__(self):
+        return 'RS ID: {}, RS Name {}'.format(self.id,self.name)
