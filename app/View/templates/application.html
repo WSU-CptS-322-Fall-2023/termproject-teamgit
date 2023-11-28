@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<body>
+
+
+    <div class="container mt-5">
+
+        <div class="row">              
+                        
+            {% for application in user.applications %}
+
+                <div class="col-lg-6 col-md-6 mb-4">
+                    <div class="post-box d-flex flex-column h-100 p-4">
+                        <h2 class="text-center">{{ application.research_post.title }}</h2>
+                        <div>
+                            <p>{{ application.research_post.Description }}</p>
+                        </div>
+                        <div class="text-center my-2">
+                            <span class="badge badge-secondary">{{ application.research_post.Major }}</span>
+                        </div>
+                        <div class="mt-3">
+                            <h5>Qualifications:</h5>
+                            <p>{{ application.research_post.Qualifications }}</p> <!-- Typo corrected from 'post.Qualifications' -->
+                        </div>
+
+                        <div class="mt-3">
+                            <h5>Research interest:</h5>
+                            {% for interest in application.research_post.get_interests().all() %}
+                                <p><span class="tagitem">{{interest.name}}</span></p>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mt-3">
+                            <h5>Research skills:</h5>
+                            {% for skill in application.research_post.get_skills().all() %}
+                                <p><span class="tagitem">{{skill.name}}</span></p>
+                            {% endfor %}
+                        </div>
+
+                        <div class="mt-3">
+                            <h5>Posted by:</h5>
+                            <p>{{application.research_post.writer.firstname}} {{application.research_post.writer.lastname}}</p>
+                            <p class="text-muted">Posted at: {{ application.research_post.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</p> 
+                        </div>
+
+                        <div class="align-self-center mt-auto">
+                            {% if current_user.userapply(application.research_post)>0 %}
+                            <a class="btn btn-crimson" href="{{ url_for('routes.apply', researchpost_id=application.research_post.id) }}" role="button">Apply Now</a>
+                            {% else %}
+                            <a class="btn btn-crimson" role="button">Pending</a>
+                            {% endif %}
+
+                            <a class="btn btn-crimson" href="{{ url_for('routes.seeReasearch',postid = application.research_post.id) }}" class = "tagitem">Details</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>                    
+    </div> 
+</body>           
+{% endblock %}

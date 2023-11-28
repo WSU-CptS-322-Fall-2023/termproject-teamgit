@@ -38,4 +38,5 @@ class ApplicationForm(FlaskForm):
    statement = TextAreaField('Personal Statement', validators=[DataRequired()])
    faculty_name = StringField('Faculty Name', validators=[DataRequired()])
    faculty_email = StringField('Faculty Email', validators=[DataRequired(), Email()])
+   status = StringField('')
    submit = SubmitField('Apply')

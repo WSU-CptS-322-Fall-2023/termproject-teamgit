@@ -54,8 +54,12 @@
                                 <a class ="btn btn-crimson" href="{{ url_for('routes.seeReasearch',postid = post.id) }}" class = "tagitem">Details</a>
                             
                                 {% else %}
-                                <a class="btn btn-crimson" href="{{ url_for('routes.apply', researchpost_id=post.id) }}" role="button">Apply Now</a>
-                                <a class="btn btn-crimson" href="{{ url_for('routes.seeReasearch',postid = post.id) }}" class = "tagitem">Details</a>
+                                    {% if current_user.userapply(post)>0 %}
+                                    <a class="btn btn-crimson" href="{{ url_for('routes.apply', researchpost_id=post.id) }}" role="button">Apply Now</a>
+                                    {% else %}
+                                    <a class="btn btn-crimson" role="button">{{current_user.userstatus(post)}}</a>
+                                    {% endif %}
+                                    <a class="btn btn-crimson" href="{{ url_for('routes.seeReasearch',postid = post.id) }}" class = "tagitem">Details</a>
                                 {% endif %}
                             </div>
 

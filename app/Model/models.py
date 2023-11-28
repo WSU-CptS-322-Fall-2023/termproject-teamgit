@@ -97,6 +97,18 @@ class Student(User):
     applications = db.relationship('Apply', secondary=Studentapp, backref='students')
     interests = db.relationship('researchinterest', secondary = userInterest,primaryjoin=(userInterest.c.student_id == id), backref=db.backref('userInterest', lazy='dynamic'), lazy='dynamic')
     skills = db.relationship('researchskills', secondary = userSkill,primaryjoin=(userSkill.c.student_id == id), backref=db.backref('userSkill', lazy='dynamic'), lazy='dynamic')
+    def userapply(self,post):
+        for t in self.applications:
+            if t.research_post.id == post.id:
+                return 0
+
+        return 1
+    
+    def userstatus(self,post):
+        for t in self.applications:
+            if t.research_post.id == post.id:
+                return t.status
+    
     def get_user_posts(self):
         return self.posts
     
@@ -118,7 +130,7 @@ class Apply(db.Model):
     faculty_name = db.Column(db.String(30))
     faculty_email = db.Column(db.String(30))
     researchpost_id = db.Column(db.Integer, db.ForeignKey('research_post.id'), nullable=False)
-
+    status= db.Column(db.String(30))
     
 class researchinterest(db.Model):
     id= db.Column(db.Integer, primary_key=True)
