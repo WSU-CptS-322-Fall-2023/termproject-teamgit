@@ -102,6 +102,9 @@ class Student(User):
     
     def get_interests(self):
         return self.interests
+    
+    def get_skills(self):
+        return self.skills
 
     __mapper_args__ ={
         'polymorphic_identity': 'Student'

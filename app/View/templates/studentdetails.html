@@ -33,10 +33,18 @@
                     </p>
                     <p class="card-text">
                         <strong>Researh Interest:</strong>
-                        {% for tag in user.get_tags().all() %}
-                          {{tag.name}}-
+                        {% for interest in user.get_interests().all() %}
+                        <p>• <span class="tagitem">{{interest.name}}</span></p>
                         {% endfor %}
                     </p>
+
+                    <p class="card-text">
+                        <strong>Research Skills:</strong> 
+                        {% for skill in user.get_skills().all() %}
+                                <p>• <span class="tagitem">{{skill.name}}</span></p>
+                        {% endfor %}
+                    </p>
+
                 </div>
             </div>
         </div>

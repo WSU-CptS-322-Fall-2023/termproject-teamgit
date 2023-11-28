@@ -20,6 +20,20 @@
                         <strong>Description:</strong> {{ post.Description }}
                     </p>
                     <p class="card-text">
+                        <strong>Research Interest:</strong> 
+                        {% for interest in post.get_interests().all() %}
+                            <p>• <span class="tagitem">{{interest.name}}</span></p>
+                        {% endfor %}
+                    </p>
+
+                    <p class="card-text">
+                        <strong>Research Skills:</strong> 
+                        {% for skill in post.get_skills().all() %}
+                                <p>• <span class="tagitem">{{skill.name}}</span></p>
+                        {% endfor %}
+                    </p>
+
+                    <p class="card-text">
                         <strong>Time Posted:</strong> {{ post.timestamp }}
                     </p>
                   
