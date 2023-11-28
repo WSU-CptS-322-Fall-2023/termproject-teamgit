@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for apply in user.appliedpost() %}
+    {% set class = apply. %}
+    {% include '_class.html' %}
+{% endfor %}
+
+    
+{% endblock %}

@@ -31,7 +31,7 @@ class ResearchPost(db.Model):
     Major = db.Column(db.String(20)) 
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    applications = db.relationship('Apply', backref='research_post', lazy=True)
+    applications = db.relationship('Apply', back_populates="postapplied")
     interests = db.relationship('researchinterest', secondary = postInterest,primaryjoin=(postInterest.c.researchpost_id == id), backref=db.backref('postInterest', lazy='dynamic'), lazy='dynamic')
     skills = db.relationship('researchskills', secondary = postSkill,primaryjoin=(postSkill.c.researchpost_id == id), backref=db.backref('postSkill', lazy='dynamic'), lazy='dynamic')
     def get_interests(self):
@@ -94,7 +94,7 @@ class Student(User):
     GPA = db.Column(db.String(64))
     Major = db.Column(db.String(64))
     Year =  db.Column(db.String(64))
-    applications = db.relationship('Apply', secondary=Studentapp, backref='students')
+    applications = db.relationship('Apply', back_populates="studentapplied" )
     interests = db.relationship('researchinterest', secondary = userInterest,primaryjoin=(userInterest.c.student_id == id), backref=db.backref('userInterest', lazy='dynamic'), lazy='dynamic')
     skills = db.relationship('researchskills', secondary = userSkill,primaryjoin=(userSkill.c.student_id == id), backref=db.backref('userSkill', lazy='dynamic'), lazy='dynamic')
     def get_user_posts(self):
@@ -105,6 +105,18 @@ class Student(User):
     
     def get_skills(self):
         return self.skills
+    
+    def apply(self, newpost):
+        if not self.is_applied(newpost):
+            newapp = Apply(postapplied= newpost)
+            self.applications.append(newapp)
+            db.session.commit()
+
+    def is_applied(self, newclass):
+        return (Apply.query.filter_by(studentid=self.id).filter_by(classid=newclass.id).count()>0)
+    
+    def appliedpost(self):
+        return self.applications
 
     __mapper_args__ ={
         'polymorphic_identity': 'Student'
@@ -117,7 +129,11 @@ class Apply(db.Model):
     statement =  db.Column(db.String(100))
     faculty_name = db.Column(db.String(30))
     faculty_email = db.Column(db.String(30))
-    researchpost_id = db.Column(db.Integer, db.ForeignKey('research_post.id'), nullable=False)
+    researchpost_id = db.Column(db.Integer, db.ForeignKey('research_post.id'), primary_key=True)
+    student_id= db.Column(db.Integer, db.ForeignKey('student.id'), primary_key=True)
+    studentapplied =db.relationship('Student')
+    postapplied = db.relationship('ResearchPost')
+
 
     
 class researchinterest(db.Model):

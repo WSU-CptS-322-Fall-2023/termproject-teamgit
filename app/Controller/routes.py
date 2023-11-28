@@ -43,8 +43,7 @@ def apply(researchpost_id):
             item.faculty_name = form.faculty_name.data
             item.faculty_email = form.faculty_email.data
             item.researchpost_id = researchpost_id  
-            current_user.applications.append(item)
-            research_post.applications.append(item)
+            current_user.apply(research_post)
             db.session.add(item)
             db.session.commit()     
             flash('You have succesfully applied to the ' + research_post.title + " position", 'success')
@@ -101,3 +100,14 @@ def viewStudent(app,student):
         theapp = Apply.query.filter_by(id=app).first()
         theStudent = Student.query.filter_by(id=student).first()
         return render_template('studentdetails.html',user = theStudent,app=theapp)
+    
+ 
+@bp_routes.route('/applications', methods=['GET', 'POST'])
+@login_required
+def applications():
+
+    
+
+    return render_template('applications.html')
+
+
