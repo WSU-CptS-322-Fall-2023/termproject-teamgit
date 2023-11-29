@@ -1,20 +1,65 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <html>
     <head>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap">
+
     </head>
 
     <body>
-        <div class ="nav-container">
-        <table>
-            <tr>
-                <td><a href="{{ url_for('routes.index') }}" class = "button">Home</a></td>
-                <td><a href="{{url_for('routes.AddReasearchPost')}}" class = "button">  Add Research post </a></td>
-                <td><a href="" class = "button"> Function 2 </a></td>
-                <td><a href="" class = "button"> Function 3 </a></td>
-                <td> Current user is: <span class="useritem">________ </span> </td>  
-            </tr>
-        </table>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav-container">
+            <a class="navbar-brand" href="#">
+                <img src="{{url_for('static', filename='img/wsu.png')}}" class="img-fluid" alt="">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                {% if current_user.is_anonymous %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="navbar-text">Current user: <span class="useritem">anonymous</span></span>
+                    </li>
+                {% elif current_user.user_type=="Faculty" %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('routes.index') }}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('routes.AddReasearchPost') }}">Create Posting</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="navbar-text">Current user: <span class="useritem">{{current_user.firstname}} {{current_user.lastname}}</span></span>
+                    </li>
+                {% else %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('routes.index') }}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Applications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">My Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="navbar-text">Current user: <span class="useritem">{{current_user.firstname}} {{current_user.lastname}}</span></span>
+                    </li>
+                {% endif %}
+                </ul>
+            </div>
+        </nav>
+            
         </div>
+
         <div>
             {% with messages = get_flashed_messages() %}
             {% if messages %}

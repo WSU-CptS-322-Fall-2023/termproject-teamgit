@@ -1,24 +1,55 @@
-{% extends "fbase.html" %}
+{% extends "base.html" %}
+
 {% block content %}
-<form action="" method="POST">
-    <div class ="formselect">
-      {{form.hidden_tag()}}
-      <p>{{form.title.label}}</p>
-      <p>{{form.title}}</p>
-
-      <p>{{form.description.label}}</p>
-      <p>{{form.description}}</p>
+<div class="container mt-5">
+  <form action="" method="POST">
+    {{ form.hidden_tag() }}
     
-      <p>{{form.qualifications.label}}</p>
-      <p>{{form.qualifications}}</p>
-    
-      
-      <p>{{form.major.label}}</p>
-      <p>{{form.major}}</p>
-      
-      <p>{{form.submit}}</p>
+    <div class="mb-3">
+      {{ form.title.label(class="form-label") }}
+      {{ form.title(class="form-control") }}
+      {% for error in form.title.errors %}
+        <div class="invalid-feedback">{{ error }}</div>
+      {% endfor %}
+    </div>
 
+    <div class="mb-3">
+      {{ form.description.label(class="form-label") }}
+      {{ form.description(class="form-control") }}
+      {% for error in form.description.errors %}
+        <div class="invalid-feedback">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="mb-3">
+      {{ form.qualifications.label(class="form-label") }}
+      {{ form.qualifications(class="form-control") }}
+      {% for error in form.qualifications.errors %}
+        <div class="invalid-feedback">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="mb-3">
+      {{ form.major.label(class="form-label") }}
+      {{ form.major(class="form-control") }}
+      {% for error in form.major.errors %}
+        <div class="invalid-feedback">{{ error }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="mb-3">
+      {{form.tag.label}}
+      {{ form.tag }}
+    </div>
+
+    <div class="mb-3">
+      {{form.tag2.label}}
+      {{ form.tag2 }}
+    </div>
+    
+    <div class="mb-3">
+      {{ form.submit(class="btn btn-crimson") }}
+    </div>
   </form>
 </div>
-
 {% endblock %}

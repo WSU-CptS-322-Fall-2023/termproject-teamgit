@@ -8,7 +8,6 @@ body {
     position: absolute;
     left:0;
     top:0;
-   
     width: auto;
     
 }
@@ -90,6 +89,30 @@ p {
     align-items: center;
 }
 
+.register-items{
+    margin:5%;
+}
+
+
+.form-label{
+    color:#4D4D4D;
+    font-weight: bold;
+}
+
+
+.register-header{
+    text-align: center;
+    margin-top:5%;
+    color:#A60F2D;
+    font-weight: bold;
+}
+
+.login-header{
+    color:#4D4D4D;
+    font-weight: bold;
+    text-align:center;
+    margin-top:5%;
+}
 
 .main-title{
     margin-top:5%;
@@ -115,3 +138,5 @@ p {
     margin-top: 5%;
     font-weight: bold;
 }
+
+

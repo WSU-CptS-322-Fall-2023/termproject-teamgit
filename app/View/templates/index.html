@@ -1,9 +1,40 @@
+{% extends "base.html" %}
+
 {% block content %}
 
-    <h1>Welcome to Research Scout</h1>
+    {% if current_user.user_type=="Faculty" %}  
+        <div class="text-center">
+            <h1 class="main-title">Welcome, Professor {{current_user.lastname}}</h1>
+            <h4 class="recommendations">Your Current Postings:</h4>
+        </div>
+        
+    {% else %}
+        <div class="text-center">
+            <h1 class="main-title">Research Postings:</h1>
 
-    <h1><a href="{{ url_for('routes.sindex') }}" class = "button">Student Page</a></h1>
+            <form action="" method="post"> 
+                {{ form.hidden_tag() }}
+                <h4 class="recommendations">Show Recommended Research Positions Only</h4>
+                {{form.choices}}
+                {{form.choices.label}}
 
-    <h1><a href="{{ url_for('routes.findex') }}" class = "button">Faculty Page</a></h1>
+                {{form.submit}}
+                
+                {{ form.tag }}
+            </form>
+        </div> 
+    
+                    
+    {% endif %}
+
+    {% if form.validate_on_submit() %}
+        {% include '_tag.html' %}
+
+    {% else %}
+        {% include '_post.html' %}
+    {% endif %}
+
+
+
     
 {% endblock %}
