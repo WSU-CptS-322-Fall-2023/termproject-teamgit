@@ -101,3 +101,11 @@ def viewStudent(app,student):
         theapp = Apply.query.filter_by(id=app).first()
         theStudent = Student.query.filter_by(id=student).first()
         return render_template('studentdetails.html',user = theStudent,app=theapp)
+
+
+@bp_routes.route('/studentprofile', methods=['GET','POST'])
+@login_required
+def stuProfile():
+    return render_template('stuprofile.html',user = current_user)
+
+
