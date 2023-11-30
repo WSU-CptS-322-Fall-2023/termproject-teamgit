@@ -107,8 +107,33 @@ def viewStudent(app,student):
 @bp_routes.route('/applications', methods=['GET','POST'])
 @login_required
 def applications():
+
+    if current_user.user_type == "Faculty":
+        flash('You cannot access this page!')
+        return redirect(url_for('routes.index'))
     
     return render_template('application.html', user =current_user)
+
+@bp_routes.route('/delete/<post_id>', methods=['DELETE','POST'])
+@login_required
+def delete(post_id):
+    if post_id is not None:
+        thepost = ResearchPost.query.filter_by(id=post_id).first()
+        for i in thepost.interests:
+            thepost.interests.remove(i)
+        for s in thepost.skills:
+            thepost.skills.remove(s)
+        for state in thepost.applications:
+            state.status = 'Not Availabe anymore :('
+            thepost.applications.remove(state)
+        db.session.commit()
+        db.session.delete(thepost)
+        db.session.commit()
+        flash('Your post has been deleted!')
+        return redirect(url_for('routes.index'))
+    
+    
+   
 
 
 
