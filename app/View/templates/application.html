@@ -49,8 +49,9 @@
                             {% if current_user.userapply(application.research_post)>0 %}
                             <a class="btn btn-crimson" href="{{ url_for('routes.apply', researchpost_id=application.research_post.id) }}" role="button">Apply Now</a>
                             {% else %}
-                            <a class="btn btn-crimson" role="button">Pending</a>
+                            <a class="btn btn-crimson" role="button">{{application.status}}</a>
                             {% endif %}
+                            <a href="{{url_for('routes.appResponse',appid =application.id,choice = 4) }}" class="btn btn-crimson" role="button">Widthdrawl</a>
 
                             <a class="btn btn-crimson" href="{{ url_for('routes.seeReasearch',postid = application.research_post.id) }}" class = "tagitem">Details</a>
                             

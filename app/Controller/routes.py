@@ -147,5 +147,7 @@ def appResponse(appid, choice):
         App.status = 'Requested For Interview'
     elif choice == 3:
         App.status = 'Denied'
+    elif choice == 4:
+        App.status = 'Widthdrawn'
     db.session.commit()
     return redirect(url_for('routes.index'))
