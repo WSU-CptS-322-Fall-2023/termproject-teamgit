@@ -45,19 +45,25 @@
                         {% endfor %}
                     </p>
                     <div class="row justify-content-center mt-4">
+                        {%if app.status == 'Pending'%}
                         <div class="col-md-10">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <button class="btn btn-success btn-block">Hire</button>
+                                    <a href="{{ url_for('routes.appResponse',appid =app.id,choice = 1) }}" class="btn btn-success btn-block" style="Color:White">Hire</a>
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-primary btn-block">Interview</button>
+                                    <a href="{{ url_for('routes.appResponse',appid =app.id,choice = 2) }}" class="btn btn-primary btn-block " style="Color:White">Interview</a>
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-danger btn-block">Deny</button>
+                                    <a href="{{ url_for('routes.appResponse',appid =app.id,choice = 3) }}" class="btn btn-danger btn-block" style="Color:White">Deny</a>
                                 </div>
                             </div>
                         </div>
+                        {%else%}
+                        <div class="col-md-10">
+                            <a class="btn btn-secondary btn-block" style="Color:White">{{app.status}}</a>
+                        </div>    
+                        {% endif %}
                     </div>
                     
                 </div>
