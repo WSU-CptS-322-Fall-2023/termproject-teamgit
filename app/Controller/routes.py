@@ -132,8 +132,20 @@ def delete(post_id):
         flash('Your post has been deleted!')
         return redirect(url_for('routes.index'))
     
+
+
+
     
-   
-
-
-
+@bp_routes.route('/appresponse/<appid>/<int:choice>', methods=['GET', 'DELETE', 'POST'])
+@login_required
+def appResponse(appid, choice):
+    print(appid)
+    App = Apply.query.filter_by(id=appid).first()
+    if choice == 1:
+        App.status = 'Hired!'
+    elif choice == 2:
+        App.status = 'Requested For Interview'
+    elif choice == 3:
+        App.status = 'Denied'
+    db.session.commit()
+    return redirect(url_for('routes.index'))
