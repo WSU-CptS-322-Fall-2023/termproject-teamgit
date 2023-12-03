@@ -6,7 +6,7 @@ from flask_login import current_user, login_required
 from config import Config
 from app import db
 from app.Controller.forms import ReasearchPostForm, SortForm, ApplicationForm
-from app.Model.models import ResearchPost, Apply,Student, researchinterest
+from app.Model.models import ResearchPost, Apply,Student, researchinterest, appun
 bp_routes = Blueprint('routes', __name__)
 bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 
@@ -112,7 +112,9 @@ def applications():
         flash('You cannot access this page!')
         return redirect(url_for('routes.index'))
     
-    return render_template('application.html', user =current_user)
+    posts=current_user.get_user_app()
+    
+    return render_template('application.html', user =current_user,posts=posts)
 
 @bp_routes.route('/delete/<post_id>', methods=['DELETE','POST'])
 @login_required
@@ -123,9 +125,14 @@ def delete(post_id):
             thepost.interests.remove(i)
         for s in thepost.skills:
             thepost.skills.remove(s)
+
         for state in thepost.applications:
-            state.status = 'Not Availabe anymore :('
-            thepost.applications.remove(state)
+            app = appun(research_topic = state.research_topic, statement= state.statement, faculty_name=state.faculty_name, faculty_email=state.faculty_email, user_id =state.students[0].id,status= "Post not available")
+            db.session.add(app)
+            db.session.commit()
+
+        for state in thepost.applications:
+            db.session.delete(state)
         db.session.commit()
         db.session.delete(thepost)
         db.session.commit()
