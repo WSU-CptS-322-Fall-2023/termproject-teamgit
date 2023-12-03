@@ -38,7 +38,7 @@ def apply(researchpost_id):
         form = ApplicationForm()
         if form.validate_on_submit():
             item = Apply()
-            item.research_topic = form.research_topic.data
+            item.research_topic = research_post.title
             item.statement = form.statement.data
             item.faculty_name = form.faculty_name.data
             item.faculty_email = form.faculty_email.data
@@ -148,6 +148,7 @@ def delete(post_id):
 def appResponse(appid, choice):
     print(appid)
     App = Apply.query.filter_by(id=appid).first()
+    apun = appun.query.filter_by(id=appid).first()
     if choice == 1:
         App.status = 'Hired!'
     elif choice == 2:
@@ -155,6 +156,8 @@ def appResponse(appid, choice):
     elif choice == 3:
         App.status = 'Denied'
     elif choice == 4:
-        App.status = 'Widthdrawn'
+        db.session.delete(App)
+    else:
+        db.session.delete(apun)
     db.session.commit()
     return redirect(url_for('routes.index'))

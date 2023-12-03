@@ -117,6 +117,11 @@ class Student(User):
         for t in self.applications:
             if t.research_post.id == post.id:
                 return t.status
+            
+    def userwith(self,post):
+        for t in self.applications:
+            if t.research_post.id == post.id:
+                return t.id
     
     def get_user_posts(self):
         return self.posts
