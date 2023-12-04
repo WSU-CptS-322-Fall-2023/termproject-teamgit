@@ -134,7 +134,26 @@ class TestModels(unittest.TestCase):
         self.assertEqual(len(student.applications), 2) # tests amount of posts
         self.assertEqual(application2.research_topic, student.applications[0].research_topic) #compare element cuz cant compare app
 
-   
+    def test_faculty_creation(self):
+        faculty_member = Faculty(username='faculty1', email='faculty1@gmail.com', title='Professor')
+        faculty_member.set_password('faculty_password')
+        db.session.add(faculty_member)
+        db.session.commit()
+        self.assertIsNotNone(faculty_member.id)
+
+    def test_faculty_research_posts(self):
+        faculty_member = Faculty(username='faculty1', email='faculty1@gmail.com', title='Professor')
+        faculty_member.set_password('faculty_password')
+        db.session.add(faculty_member)
+        
+        post1 = ResearchPost(title='Research Post 1', Description='Desc 1', Qualifications='Qualif 1', Major='Major 1', timestamp=datetime.utcnow())
+        post2 = ResearchPost(title='Research Post 2', Description='Desc 2', Qualifications='Qualif 2', Major='Major 2', timestamp=datetime.utcnow())
+        
+        faculty_member.research_posts.append(post1)
+        faculty_member.research_posts.append(post2)
+        db.session.commit()
+
+        self.assertEqual(len(faculty_member.research_posts), 2) #posts are associagted with faculty
 
 if __name__ == "__main__":
     unittest.main()
