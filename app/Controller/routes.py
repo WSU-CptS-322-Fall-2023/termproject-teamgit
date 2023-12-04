@@ -6,7 +6,7 @@ from flask_login import current_user, login_required
 from config import Config
 from app import db
 from app.Controller.forms import ReasearchPostForm, SortForm, ApplicationForm
-from app.Model.models import ResearchPost, Apply,Student, researchinterest
+from app.Model.models import ResearchPost, Apply,Student, researchinterest, appun
 bp_routes = Blueprint('routes', __name__)
 bp_routes.template_folder = Config.TEMPLATE_FOLDER #'..\\View\\templates'
 
@@ -38,11 +38,12 @@ def apply(researchpost_id):
         form = ApplicationForm()
         if form.validate_on_submit():
             item = Apply()
-            item.research_topic = form.research_topic.data
+            item.research_topic = research_post.title
             item.statement = form.statement.data
             item.faculty_name = form.faculty_name.data
             item.faculty_email = form.faculty_email.data
             item.researchpost_id = researchpost_id  
+            item.status = 'Pending'
             current_user.applications.append(item)
             research_post.applications.append(item)
             db.session.add(item)
@@ -103,9 +104,61 @@ def viewStudent(app,student):
         return render_template('studentdetails.html',user = theStudent,app=theapp)
 
 
-@bp_routes.route('/studentprofile', methods=['GET','POST'])
+
+@bp_routes.route('/applications', methods=['GET','POST'])
 @login_required
-def stuProfile():
-    return render_template('stuprofile.html',user = current_user)
+def applications():
+
+    if current_user.user_type == "Faculty":
+        flash('You cannot access this page!')
+        return redirect(url_for('routes.index'))
+    
+    posts=current_user.get_user_app()
+    
+    return render_template('application.html', user =current_user,posts=posts)
+
+@bp_routes.route('/delete/<post_id>', methods=['DELETE','POST'])
+@login_required
+def delete(post_id):
+    if post_id is not None:
+        thepost = ResearchPost.query.filter_by(id=post_id).first()
+        for i in thepost.interests:
+            thepost.interests.remove(i)
+        for s in thepost.skills:
+            thepost.skills.remove(s)
+
+        for state in thepost.applications:
+            app = appun(research_topic = state.research_topic, statement= state.statement, faculty_name=state.faculty_name, faculty_email=state.faculty_email, user_id =state.students[0].id,status= "Post not available")
+            db.session.add(app)
+            db.session.commit()
+
+        for state in thepost.applications:
+            db.session.delete(state)
+        db.session.commit()
+        db.session.delete(thepost)
+        db.session.commit()
+        flash('Your post has been deleted!')
+        return redirect(url_for('routes.index'))
+    
 
 
+
+    
+@bp_routes.route('/appresponse/<appid>/<int:choice>', methods=['GET', 'DELETE', 'POST'])
+@login_required
+def appResponse(appid, choice):
+    print(appid)
+    App = Apply.query.filter_by(id=appid).first()
+    apun = appun.query.filter_by(id=appid).first()
+    if choice == 1:
+        App.status = 'Hired!'
+    elif choice == 2:
+        App.status = 'Requested For Interview'
+    elif choice == 3:
+        App.status = 'Denied'
+    elif choice == 4:
+        db.session.delete(App)
+    else:
+        db.session.delete(apun)
+    db.session.commit()
+    return redirect(url_for('routes.index'))

@@ -75,6 +75,11 @@ Facultypost = db.Table(
     db.Column('faculty_id', db.Integer, db.ForeignKey('faculty.id')),
     db.Column('researchpost_id', db.Integer, db.ForeignKey('research_post.id'))
 )
+studentpost = db.Table(
+    'student_researchpost_association',
+    db.Column('student_id', db.Integer, db.ForeignKey('student.id')),
+    db.Column('appun_id', db.Integer, db.ForeignKey('appun.id'))
+)
 
 class Faculty(User):
     __tablename__='faculty'
@@ -94,9 +99,30 @@ class Student(User):
     GPA = db.Column(db.String(64))
     Major = db.Column(db.String(64))
     Year =  db.Column(db.String(64))
+    posts = db.relationship('appun',backref='writer',lazy='dynamic')
     applications = db.relationship('Apply', secondary=Studentapp, backref='students')
     interests = db.relationship('researchinterest', secondary = userInterest,primaryjoin=(userInterest.c.student_id == id), backref=db.backref('userInterest', lazy='dynamic'), lazy='dynamic')
     skills = db.relationship('researchskills', secondary = userSkill,primaryjoin=(userSkill.c.student_id == id), backref=db.backref('userSkill', lazy='dynamic'), lazy='dynamic')
+    def get_user_app(self):
+        return self.posts
+    
+    def userapply(self,post):
+        for t in self.applications:
+            if t.research_post.id == post.id:
+                return 0
+
+        return 1
+    
+    def userstatus(self,post):
+        for t in self.applications:
+            if t.research_post.id == post.id:
+                return t.status
+            
+    def userwith(self,post):
+        for t in self.applications:
+            if t.research_post.id == post.id:
+                return t.id
+    
     def get_user_posts(self):
         return self.posts
     
@@ -118,7 +144,16 @@ class Apply(db.Model):
     faculty_name = db.Column(db.String(30))
     faculty_email = db.Column(db.String(30))
     researchpost_id = db.Column(db.Integer, db.ForeignKey('research_post.id'), nullable=False)
+    status= db.Column(db.String(30))
 
+class appun(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    research_topic =  db.Column(db.String(30))
+    statement =  db.Column(db.String(100))
+    faculty_name = db.Column(db.String(30))
+    faculty_email = db.Column(db.String(30))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    status= db.Column(db.String(30))
     
 class researchinterest(db.Model):
     id= db.Column(db.Integer, primary_key=True)
