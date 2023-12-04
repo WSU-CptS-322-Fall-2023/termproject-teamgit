@@ -9,7 +9,9 @@ from datetime import datetime, timedelta
 import unittest
 from app import create_app, db
 from app.Model.models import (
+    Faculty,
     ResearchPost,
+    Student,
     User,
     researchinterest,
     researchskills,
@@ -51,7 +53,7 @@ class TestModels(unittest.TestCase):
         db.session.commit()
         self.assertIsNotNone(user.id)
 
-    def test_research_post_creation(self):
+    def test_post_creation(self):
         post = ResearchPost(
             title="Test Post",
             Description="Test Description",
@@ -63,7 +65,7 @@ class TestModels(unittest.TestCase):
         db.session.commit()
         self.assertIsNotNone(post.id)
 
-    def test_apply_creation(self):
+    def test_application_creation(self):
         post = ResearchPost(
             title="Test Post",
             Description="Test Description",
@@ -87,6 +89,52 @@ class TestModels(unittest.TestCase):
         self.assertIsNotNone(application.id) #app is created
         self.assertIn(application, post.applications) #app is in the post
 
+
+    def test_user_authentication(self):
+        user = User(username='testuser', email='test@example.com')
+        user.set_password('testpassword')
+        db.session.add(user)
+        db.session.commit()
+
+        self.assertTrue(user.get_password('testpassword'))
+        self.assertFalse(user.get_password('wrongpassword'))
+    
+    
+    def test_student_creation(self):
+        student = Student(username='student1', email='student1@example.com', GPA='3.5', Major='Computer Science', Year='Junior')
+        student.set_password('student_password')
+        db.session.add(student)
+        db.session.commit()
+        self.assertIsNotNone(student.id)
+
+
+    def test_student_applications(self):
+        student = Student(username='student1', email='student1@example.com', GPA='3.5', Major='Computer Science', Year='Junior')
+        student.set_password('student_password')
+        db.session.add(student)
+        
+        post1 = ResearchPost(title='Research Post 1', Description='Desc 1', Qualifications='Qualif 1', Major='Major 1', timestamp=datetime.utcnow())
+        post2 = ResearchPost(title='Research Post 2', Description='Desc 2', Qualifications='Qualif 2', Major='Major 2', timestamp=datetime.utcnow())
+        
+        db.session.add(post1)
+        db.session.add(post2)
+        db.session.commit()
+
+        application1 = Apply(research_topic='Topic 1', statement='Statement 1', faculty_name='Faculty 1', faculty_email='faculty1@example.com', researchpost_id=post1.id, status='Pending')
+        application2 = Apply(research_topic='Topic 2', statement='Statement 2', faculty_name='Faculty 2', faculty_email='faculty2@example.com', researchpost_id=post2.id, status='Pending')
+        
+        db.session.add(application1)
+        db.session.add(application2)
+        db.session.commit()
+
+        student.applications.append(application1)
+        student.applications.append(application2)
+        db.session.commit()
+
+        self.assertEqual(len(student.applications), 2) # tests amount of posts
+        self.assertEqual(application2.research_topic, student.applications[0].research_topic) #compare element cuz cant compare app
+
+   
 
 if __name__ == "__main__":
     unittest.main()
