@@ -132,7 +132,7 @@ class TestModels(unittest.TestCase):
         db.session.commit()
 
         self.assertEqual(len(student.applications), 2) # tests amount of posts
-        self.assertEqual(application2.research_topic, student.applications[0].research_topic) #compare element cuz cant compare app
+        self.assertIn(application2, student.applications) #compare element cuz cant compare app
 
     def test_faculty_creation(self):
         faculty_member = Faculty(username='faculty1', email='faculty1@gmail.com', title='Professor')
