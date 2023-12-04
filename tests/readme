@@ -1,0 +1,2 @@
+run python -m pytest (pathto file)
+works without init py and fixes errors
