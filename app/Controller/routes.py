@@ -104,6 +104,7 @@ def viewStudent(app,student):
         return render_template('studentdetails.html',user = theStudent,app=theapp)
 
 
+
 @bp_routes.route('/applications', methods=['GET','POST'])
 @login_required
 def applications():

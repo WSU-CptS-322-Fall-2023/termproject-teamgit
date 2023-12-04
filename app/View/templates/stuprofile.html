@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card border-dark">
+                <div class="card-header">
+                    <h1 class="mb-0"> {{ user.firstname }} {{user.lastname}}</h1>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <strong>GPA:</strong>  {{user.GPA}}
+                    </p>
+                    <p class="card-text">
+                        <strong>Major:</strong>  {{user.Major}}
+                    </p>
+                    <p class="card-text">
+                        <strong>Grade Level:</strong>  {{user.Year}}
+                    </p>
+                    <p class="card-text">
+                        <strong>Skills:</strong>  {{user.Skills}}
+                    </p>
+                    <p class="card-text">
+                        <strong>Researh Interest:</strong>
+                        {% for interest in user.get_interests().all() %}
+                        <p>• <span class="tagitem">{{interest.name}}</span></p>
+                        {% endfor %}
+                    </p>
+
+                    <p class="card-text">
+                        <strong>Research Skills:</strong> 
+                        {% for skill in user.get_skills().all() %}
+                                <p>• <span class="tagitem">{{skill.name}}</span></p>
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
